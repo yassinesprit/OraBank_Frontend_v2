@@ -1,0 +1,61 @@
+<main>
+  <div class="container">
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+            <div class="d-flex justify-content-center py-4">
+              <a href="index.html" class="logo d-flex align-items-center w-auto">
+                <img src="assets/img/ora.png" alt="">
+              </a>
+            </div><!-- End Logo -->
+            <div class="card mb-3">
+              <div class="card-body">
+                <div class="pt-4 pb-2">
+                  <h5 class="card-title text-center pb-0 fs-4">Authentication</h5>
+                  <p class="text-center small">Restez connecter à votre banque</p>
+                </div>
+                <form class="row g-3">
+                  <div class="col-12">
+                    <label for="yourUsername" class="form-label">Username</label>
+                    <div class="input-group">
+                      <span class="input-group-text" id="inputGroupPrepend">&#64;</span>
+                      <input type="text" name="username" [(ngModel)]="usernameValue" required minlength="5"
+                             #usernameInput="ngModel"
+                             [ngClass]="{ 'error': usernameInput.invalid && usernameInput.touched }"
+                             class="form-control" id="yourUsername" required>
+                    </div>
+                    <div *ngIf="usernameInput.invalid && usernameInput.touched" class="error-messages">
+                      <div *ngIf="usernameInput.errors?.['required']">Obligatoire</div>
+                      <div *ngIf="usernameInput.errors?.['minlength']">Longueur Minimum : 5</div>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="col-12">
+                    <label for="yourPassword" class="form-label">Mot de Passe</label>
+                    <input type="password" name="password" class="form-control" id="yourPassword" [(ngModel)]="passwordValue" required minlength="5"
+                           #passwordInput="ngModel"
+                           [ngClass]="{ 'error': passwordInput.invalid && passwordInput.touched }">
+                    <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error-messages">
+                      <div *ngIf="passwordInput.errors?.['required']">Obligatoire</div>
+                      <div *ngIf="passwordInput.errors?.['minlength']">Longueur Minimale : 5</div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <button class="btn btn-primary-green w-100" type="button" (click)="login()">S'authentifier</button>
+                  </div>
+                  <div class="col-12">
+                    <p class="small mb-0">Mot de passe oublié? <a href="pages-register.html">Reinitialiser</a></p>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main><!-- End #main -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
