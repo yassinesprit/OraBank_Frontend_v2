@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import {LoginComponent} from "./login/login.component";
 import {DisplayAliasComponent} from "./Alias/display-alias/display-alias.component";
 import {ChoisirCompteComponent} from "./CompteBancaire/choisir-compte/choisir-compte.component";
+import {AliasFormComponent} from "./Alias/alias-form/alias-form.component";
+import {HomeComponent} from "./Pages/home/home.component";
+import {TransactionComponent} from "./transaction/transaction.component";
 
 const routes: Routes = [
   { path: '',
@@ -14,16 +17,24 @@ const routes: Routes = [
     component:LoginComponent
   },
   {
-    path:"home",
-    component:DisplayAliasComponent
-  },
-  {
     path:"monAlias/:id",
     component:DisplayAliasComponent
   },
   {
     path:"choisirCompte",
     component:ChoisirCompteComponent
+  },
+  {
+    path:"creerAlias",
+    component:AliasFormComponent
+  },
+  {
+    path:"home",
+    component:HomeComponent
+  },
+  {
+    path:"transaction",
+    component:TransactionComponent
   },
 ];
 

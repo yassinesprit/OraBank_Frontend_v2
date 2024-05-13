@@ -15,6 +15,10 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { ChoisirCompteComponent } from './CompteBancaire/choisir-compte/choisir-compte.component';
 import {AuthGuard} from "./Services/Securité/auth.guard";
 import {JwtInterceptor} from "./Services/Securité/jwt.interceptor";
+import {ClipboardModule} from "ngx-clipboard";
+import { AliasFormComponent } from './Alias/alias-form/alias-form.component';
+import { HomeComponent } from './Pages/home/home.component';
+import { TransactionComponent } from './transaction/transaction.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,10 @@ import {JwtInterceptor} from "./Services/Securité/jwt.interceptor";
     SideBarComponent,
     LoginComponent,
     DisplayAliasComponent,
-    ChoisirCompteComponent
+    ChoisirCompteComponent,
+    AliasFormComponent,
+    HomeComponent,
+    TransactionComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +39,8 @@ import {JwtInterceptor} from "./Services/Securité/jwt.interceptor";
     FormsModule,
     CommonModule,
     QRCodeModule,
-    HttpClientModule
+    HttpClientModule,
+    ClipboardModule
   ],
   providers: [
     AuthGuard,

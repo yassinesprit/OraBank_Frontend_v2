@@ -35,7 +35,7 @@ export class LoginComponent {
           text: "Vous êtes connectés en tant que "+username,
           icon: "success"
         });
-        this.router.navigate(['/choisirCompte']);
+        this.router.navigate(['/home']);
       }
       , error => {
         console.error(error);

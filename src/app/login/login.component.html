@@ -32,8 +32,9 @@
                   </div>
                   <br>
                   <div class="col-12">
-                    <label for="yourPassword" class="form-label">Mot de Passe</label>
-                    <input type="password" name="password" class="form-control" id="yourPassword" [(ngModel)]="passwordValue" required minlength="5"
+                    <label for="yourPassword" clas s="form-label">Mot de Passe</label>
+                    <input type="password" name="password" class="form-control" id="yourPassword"
+                           [(ngModel)]="passwordValue" required minlength="5"
                            #passwordInput="ngModel"
                            [ngClass]="{ 'error': passwordInput.invalid && passwordInput.touched }">
                     <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error-messages">

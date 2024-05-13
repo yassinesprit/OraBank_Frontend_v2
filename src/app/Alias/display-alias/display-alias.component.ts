@@ -11,6 +11,9 @@ import {AliasService} from "../../Services/Alias/alias.service";
 export class DisplayAliasComponent implements OnInit{
   id:any;
   alias!:Alias;
+  myAlias!:string;
+  showCopiedNotification: boolean = false;
+
   constructor(private ac:ActivatedRoute,private aliasService:AliasService) { }
 
   ngOnInit(): void {
@@ -19,7 +22,18 @@ export class DisplayAliasComponent implements OnInit{
     console.log(this.id);
     this.aliasService.retrieveByComptebancaire(this.id).subscribe(
       result=>{
-        this.alias=result;}
+        this.alias=result;
+        this.myAlias=this.alias.alias.toString();
+        console.log(this.myAlias)
+        localStorage.setItem('compteBancaireId',this.id);
+        localStorage.setItem('alias',this.myAlias.toString());
+      }
     )
+  }
+  showNotification() {
+    this.showCopiedNotification = true;
+    setTimeout(() => {
+      this.showCopiedNotification = false;
+    }, 2000); // Hide the notification after 2 seconds (adjust the duration as needed)
   }
 }

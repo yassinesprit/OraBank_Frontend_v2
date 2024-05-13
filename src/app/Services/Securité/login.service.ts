@@ -32,6 +32,8 @@ export class LoginService {
     console.log(localStorage.getItem('token'));
     const username =localStorage.getItem('username');
     localStorage.removeItem('username');
+    localStorage.removeItem('alias');
+    localStorage.removeItem('compteBancaireId');
 
     console.log(localStorage.getItem('username'));
     const headers = {

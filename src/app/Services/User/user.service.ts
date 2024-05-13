@@ -4,13 +4,14 @@ import {Observable} from "rxjs";
 import { map } from 'rxjs/operators';
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {UserResponse} from "../../Model/UserResponse";
+import {Utilisateur} from "../../Model/Utilisateur";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private host:string="http://localhost:8080/user";
+  private host:string="http://localhost:9999/user";
 
 
 
@@ -28,9 +29,9 @@ export class UserService {
   retrieveUserById(id:number):Observable<UserResponse> {
     return this.http.get<UserResponse>(`${this.host}/${id}`);
   }
-  loadUserByUsername(username:string):Observable<UserResponse> {
+  loadUserByUsername(username:any):Observable<Utilisateur> {
     console.log(username)
-    return this.http.get<UserResponse>(`${this.host}/username/${username}`);
+    return this.http.get<Utilisateur>(`${this.host}/username/${username}`);
   }
 
   /*save(user:UserDto) {
@@ -38,7 +39,7 @@ export class UserService {
   }*/
 
 
-  currentUser():Observable<UserResponse>{
+  currentUser():Observable<Utilisateur>{
     const token = localStorage.getItem('token');
     if (token==null){
       throw new Error("no current user");

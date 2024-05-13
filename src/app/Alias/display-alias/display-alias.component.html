@@ -24,9 +24,14 @@
           <div class="d-flex w-100 justify-content-between">
 
             <h5 class="mb-1">L'Alias relatif à votre compte : <b>{{alias.alias}}</b></h5>
+            <div class="icon">
+              <button ngxClipboard [cbContent]="alias.alias" class="ri-file-copy-2-fill" (cbOnSuccess)="showNotification()"></button>
+              <div class="label">Copier</div>
+            </div>
           </div>
           <br>
           <p class="mb-1">Type de l'Alias : <b>{{alias.type}}</b></p>
+          <div *ngIf="showCopiedNotification" class="notification">Copié dans le presse papier!</div>
         </div>
       </div>
     </div>
