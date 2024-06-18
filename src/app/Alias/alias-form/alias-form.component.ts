@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {CompteBancaire} from "../../Model/CompteBancaire";
 import {Router} from "@angular/router";
 import {CompteBancaireService} from "../../Services/CompteBancaire/compte-bancaire.service";
+import {AliasService} from "../../Services/Alias/alias.service";
+import {Alias} from "../../Model/Alias";
+import Swal from "sweetalert2";
 
 
 @Component({
@@ -1230,9 +1233,11 @@ export class AliasFormComponent implements OnInit {
 
   constructor(private router: Router,
               private compteBancaire:CompteBancaireService,
+              private aliasService: AliasService
+
   ){}
   ngOnInit(): void {
-    this.compteBancaire.retrieveByUsername().subscribe((result) => {
+    this.compteBancaire.retrieveFreeByUsername().subscribe((result) => {
       this.list=result;
     })
 
@@ -1248,4 +1253,43 @@ export class AliasFormComponent implements OnInit {
     });
   }
 
+  createAlias(formType: string, value: any): void {
+    console.log(value); // Access the selected value of selectedCompte
+    if (value == null) {
+      console.error('No compte bancaire selected');
+      return;
+    }
+    const username = localStorage.getItem('username') ?? ''; // Provide an empty string as the default value
+    const compteBancaireId = value;
+    const aliasRequest: Alias = new Alias(
+      "myAlias",
+      formType,
+      username,
+      compteBancaireId,
+      this.telephone
+    );
+    if (formType === 'ParAdresse') {
+      // Logic for 'parAdresse' form type
+      aliasRequest.telephone = '';
+    } else if (formType === 'ParTelephone') {
+      // Logic for 'parTelephone' form type
+      aliasRequest.telephone = this.telephone;
+    }
+    this.aliasService.createAlias(aliasRequest).subscribe(
+      response => {
+        // Handle the response from the alias service
+        console.log('Alias created:', response);
+        Swal.fire({
+          title: "Parfait !",
+          text: "Alias Créé!",
+          icon: "success"
+        });
+        this.router.navigate(["/monAlias/"+compteBancaireId]);
+      },
+      error => {
+        // Handle any errors that occur during the alias service request
+        console.error('Error creating alias:', error);
+      }
+    );
+  }
 }

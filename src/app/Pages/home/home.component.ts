@@ -3,6 +3,7 @@ import {AliasService} from "../../Services/Alias/alias.service";
 import {Router} from "@angular/router";
 import {Alias} from "../../Model/Alias";
 import {CompteBancaireService} from "../../Services/CompteBancaire/compte-bancaire.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-home',
@@ -31,6 +32,7 @@ export class HomeComponent implements OnInit{
     const compteBancaireId = localStorage.getItem('compteBancaireId');
 
     if (alias) {
+
       this.router.navigateByUrl('/transaction');
     } else {
       this.router.navigateByUrl('/choisirCompte');

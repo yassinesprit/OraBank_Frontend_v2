@@ -6,6 +6,7 @@ import {ChoisirCompteComponent} from "./CompteBancaire/choisir-compte/choisir-co
 import {AliasFormComponent} from "./Alias/alias-form/alias-form.component";
 import {HomeComponent} from "./Pages/home/home.component";
 import {TransactionComponent} from "./transaction/transaction.component";
+import {TransfererComponent} from "./transaction/transferer/transferer.component";
 
 const routes: Routes = [
   { path: '',
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path:"transaction",
     component:TransactionComponent
+  },
+  {
+    path:"transferer",
+    component:TransfererComponent
   },
 ];
 

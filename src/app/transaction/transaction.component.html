@@ -44,13 +44,13 @@
 
                   <!-- Sales Card -->
                   <div class="col-xxl-4 col-md-6">
-                    <a routerLink="/transferer" class="card-link">
+                    <a routerLink="" class="card-link">
                       <div class="card info-card sales-card">
                         <div class="card-body d-flex flex-column align-items-center justify-content-center"
                              style="height: 200px;">
                           <h5 class="card-title mb-0">Transferer </h5>
                           <div class="d-flex align-items-center mt-3">
-                            <a href="index.html" class="logo d-flex align-items-center w-auto">
+                            <a routerLink="/transferer" class="logo d-flex align-items-center w-auto">
                               <img src="assets/img/outcoming.png" alt="">
                             </a>
                           </div>
@@ -62,7 +62,7 @@
 
                   <!-- Revenue Card -->
                   <div class="col-xxl-4 col-md-6">
-                    <a href="link_to_revenue_page" class="card-link">
+                    <a href="" class="card-link">
                       <div class="card info-card revenue-card">
                         <div class="card-body d-flex flex-column align-items-center justify-content-center"
                              style="height: 200px;">
@@ -77,35 +77,8 @@
                     </a>
                   </div><!-- End Revenue Card -->
 
-                  <!-- Customers Card -->
-                  <div class="col-xxl-4 col-xl-12">
-                    <a href="link_to_customers_page" class="card-link">
-                      <div class="card info-card customers-card">
-                        <div class="card-body d-flex flex-column align-items-center justify-content-center"
-                             style="height: 200px;">
-                          <h5 class="card-title mb-0">Plus </h5>
-                          <div class="d-flex align-items-center mt-3">
-                            <div class="dropdown">
-                              <button class="btn btn-transparent" type="button" id="dropdownMenuButton"
-                                      data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-three-dots"></i>
-                              </button>
-                              <ul class="dropdown-menu dropdown-menu-center dropdown-menu-lg"
-                                  aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" href="#">Today</a></li>
-                                <li><a class="dropdown-item" href="#">This Month</a></li>
-                                <li><a class="dropdown-item" href="#">This Year</a></li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  </div><!-- End Customers Card -->
-
-
                   <!-- Sales Card -->
-                  <div class="col-xxl-4 col-md-6">
+                  <div class="col-xxl-4 col-md-12">
                     <div class="card info-card sales-card">
 
                       <div class="card-body">
@@ -116,7 +89,7 @@
                             <i class="bi bi-currency-dollar"></i>
                           </div>
                           <div class="ps-3">
-                            <h6>145</h6>
+                            <h6>{{ compte.solde }}</h6>
                             <span class="text-success small pt-1 fw-bold">12%</span> <span
                             class="text-muted small pt-2 ps-1">increase</span>
 
@@ -127,54 +100,6 @@
                     </div>
                   </div><!-- End Sales Card -->
 
-                  <!-- Revenue Card -->
-                  <div class="col-xxl-4 col-md-6">
-                    <div class="card info-card revenue-card">
-
-                      <div class="card-body">
-                        <h5 class="card-title">Reçu </h5>
-
-                        <div class="d-flex align-items-center">
-                          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                            <i class="bi bi-cart"></i>
-                          </div>
-                          <div class="ps-3">
-                            <h6>$3,264</h6>
-                            <span class="text-success small pt-1 fw-bold">8%</span> <span
-                            class="text-muted small pt-2 ps-1">increase</span>
-
-                          </div>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div><!-- End Revenue Card -->
-
-                  <!-- Customers Card -->
-                  <div class="col-xxl-4 col-xl-12">
-
-                    <div class="card info-card customers-card">
-
-
-                      <div class="card-body">
-                        <h5 class="card-title">Transfert </h5>
-
-                        <div class="d-flex align-items-center">
-                          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                            <i class="bi bi-people"></i>
-                          </div>
-                          <div class="ps-3">
-                            <h6>1244</h6>
-                            <span class="text-danger small pt-1 fw-bold">12%</span> <span
-                            class="text-muted small pt-2 ps-1">decrease</span>
-
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-
-                  </div><!-- End Customers Card -->
 
 
                   <!-- Top Selling -->
@@ -206,19 +131,18 @@
                           </tr>
                           </thead>
                           <tbody>
-                          <tr>
-                            <th scope="row"><a href="#"><img src="assets/img/incoming.png" alt=""></a></th>
-                            <td><a href="#" class="text-bg-light fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                            <td class="fw-bold">$64</td>
-                          </tr>
-                          <tr>
-                            <th scope="row"><a href="#"><img src="assets/img/outcoming.png" alt=""></a></th>
-                            <td><a href="#" class="text-bg-light fw-bold">Exercitationem similique doloremque</a></td>
-                            <td class="fw-bold">$46</td>
+                          <tr *ngFor="let transfert of transferts">
+                            <th scope="row">
+                                <img *ngIf="transfert.statusTransfert === 'Entrant'" src="assets/img/incoming.png" alt="">
+                                <img *ngIf="transfert.statusTransfert === 'Sortant'" src="assets/img/outcoming.png" alt="">
+                            </th>
+                            <td>
+                              <a href="#" class="text-bg-light fw-bold">{{ transfert.description }}</a>
+                            </td>
+                            <td class="fw-bold">{{ transfert.montant }}</td>
                           </tr>
                           </tbody>
                         </table>
-
                       </div>
 
                     </div>

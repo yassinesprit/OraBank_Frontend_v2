@@ -25,8 +25,8 @@
 
             <!-- List group with Advanced Contents -->
             <div class="list-group">
-              <button *ngFor="let item of list"  class="list-group-item list-group-item-action" aria-current="true"
-                      [routerLink]="['/monAlias/',item.id]">
+              <button *ngFor="let item of list"  class="list-group-item list-group-item-action" aria-current="true" (click)="redirectAfterVarif(item.id)"
+                      >
                 <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1">{{ item.libelle }}</h5>
                   <small>{{ item.dateDeCreation | date }}</small>

@@ -1,48 +1,44 @@
-<div  *ngIf="sidebarVisible" class="sidebar">
+<div *ngIf="sidebarVisible" class="sidebar">
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
+
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" routerLink="/home">
-          <i class="bi bi-layout-text-window-reverse"></i>
+        <a class="nav-link collapsed" routerLink="/home">
+          <i class="bi bi-journal-text"></i>
           <span>Acceuil</span>
         </a>
-      </li><!-- End home Nav -->
-
-
+      </li><!-- End Home Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" href="index.html">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
-      </li><!-- End Dashboard Page Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-envelope"></i>
-          <span>Messagerie</span>
-        </a>
-      </li><!-- End Contact Page Nav -->
+      </li><!-- End Dashboard Nav -->
+
 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i>
-          <span>Reclamation</span>
+        <a class="nav-link collapsed" data-bs-target="#Alias-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Alias</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-      </li><!-- End Reclamation Nav -->
+        <ul id="Alias-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+          <li>
+            <a routerLink="/choisirCompte">
+              <i class="bi bi-circle"></i><span>Changer Compte Bancaire</span>
+            </a>
+          </li>
+          <li>
+            <a (click)="goToMonAlias()" >
+              <i class="bi bi-circle"></i><span>Mon Alias </span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Alias Nav -->
 
-      <li class="nav-heading">Pages</li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-blank.html">
-          <i class="bi bi-file-earmark"></i>
-          <span>à propos de Orabank</span>
-        </a>
-      </li><!-- End A propos de ORABANK Page Nav -->
 
     </ul>
-
   </aside><!-- End Sidebar-->
 </div>

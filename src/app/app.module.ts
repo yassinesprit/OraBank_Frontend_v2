@@ -19,6 +19,7 @@ import {ClipboardModule} from "ngx-clipboard";
 import { AliasFormComponent } from './Alias/alias-form/alias-form.component';
 import { HomeComponent } from './Pages/home/home.component';
 import { TransactionComponent } from './transaction/transaction.component';
+import { TransfererComponent } from './transaction/transferer/transferer.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { TransactionComponent } from './transaction/transaction.component';
     AliasFormComponent,
     HomeComponent,
     TransactionComponent,
+    TransfererComponent,
   ],
   imports: [
     BrowserModule,

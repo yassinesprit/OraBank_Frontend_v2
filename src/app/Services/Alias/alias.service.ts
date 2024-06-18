@@ -15,4 +15,8 @@ export class AliasService {
   retrieveByComptebancaire(id:any): Observable<any> {
     return this.http.get<Alias>(`${this.host}/comptebancaire/${id}`);
   }
+
+  createAlias(alias: any): Observable<any> {
+    return this.http.post(this.host, alias);
+  }
 }

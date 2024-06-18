@@ -38,7 +38,7 @@
                           <select [(ngModel)]="selectedCompte" name="compte" class="form-select" required
                                   #selectcompte="ngModel"
                                   [ngClass]="{ 'error': selectcompte.invalid && selectcompte.touched }">
-                            <option *ngFor="let compte of list" [value]="compte">{{ compte.libelle }}</option>
+                            <option *ngFor="let compte of list" [value]="compte.id" >{{ compte.libelle }}</option>
                           </select>
                           <br>
                           <div *ngIf="selectcompte.touched" class="error-messages">
@@ -47,7 +47,9 @@
                         </div>
                       </div>
                       <br>
-                      <button class="btn btn-primary-green w-100" type="submit">Continuer</button>
+                      <button class="btn btn-primary-green w-100" type="submit" (click)="createAlias('ParAdresse',selectedCompte)">
+                        Continuer
+                      </button>
                     </form>
                   </div>
                 </div>
@@ -63,7 +65,7 @@
                 <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
                      data-bs-parent="#accordionFlushExample">
                   <div class="accordion-body">
-                    <form class="row g-3 " >
+                    <form class="row g-3 ">
 
                       <div class="col-12">
                         <label for="phone" class="form-label">Phone Number</label>
@@ -83,7 +85,7 @@
                           <select [(ngModel)]="selectedCompte" name="compte" class="form-select" required
                                   #selectcompte1="ngModel"
                                   [ngClass]="{ 'error': selectcompte1.invalid && selectcompte1.touched }">
-                            <option *ngFor="let compte of list" [value]="compte">{{ compte.libelle }}</option>
+                            <option *ngFor="let compte of list" [value]="compte.id">{{ compte.libelle }}</option>
                           </select>
                           <br>
                           <div *ngIf="selectcompte1.touched" class="error-messages">
@@ -92,7 +94,9 @@
                         </div>
                       </div>
 
-                      <button class="btn btn-primary-green w-100" type="submit">Continuer</button>
+                      <button class="btn btn-primary-green w-100" type="submit" (click)="createAlias('ParTelephone',selectedCompte)">
+                        Continuer
+                      </button>
                     </form>
 
                   </div>
