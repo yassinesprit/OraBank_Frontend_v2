@@ -20,6 +20,8 @@ import { AliasFormComponent } from './Alias/alias-form/alias-form.component';
 import { HomeComponent } from './Pages/home/home.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { TransfererComponent } from './transaction/transferer/transferer.component';
+import {NotificationService} from "./Services/WebSocket/notification.service";
+import {Client, Stomp} from "@stomp/stompjs";
 
 @NgModule({
   declarations: [
@@ -47,6 +49,17 @@ import { TransfererComponent } from './transaction/transferer/transferer.compone
   providers: [
     AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    {
+      provide: NotificationService,
+      useFactory: (client: Client) => {
+        return new NotificationService(client);
+      },
+      deps: [Client]
+    },
+    {
+      provide: Client,
+      useValue: Stomp.client('ws://localhost:9999/ws')
+    },
   ],
   bootstrap: [AppComponent]
 })
