@@ -1,0 +1,48 @@
+<mat-card class="main-card">
+  <mat-card-content>
+    <div class="card-container">
+      <!-- First Row -->
+      <mat-card class="large-card">
+        <mat-card-title>Solde :</mat-card-title>
+        <mat-card-content>
+          <h6 class="solde-text">${{ compte.solde }}$</h6>
+        </mat-card-content>
+      </mat-card>
+
+
+      <!-- Second Row -->
+      <mat-card class="large-card" (click)="navigateToDetailsTransfer()">
+        <mat-card-title>Détails anciennes Transactions</mat-card-title>
+        <mat-card-content>
+          <a class="lien-text" (click)="navigateToDetailsTransfer()" >Details</a>
+        </mat-card-content>
+      </mat-card>
+
+
+      <!-- Third Row -->
+      <div class="row">
+        <mat-card class="small-card" (click)="navigateToSend()">
+          <div class="card-content">
+            <img mat-card-image src="assets/img/outcoming.png" alt="Transferer Image" (click)="navigateToSend()">
+            <mat-card-title>Transferer</mat-card-title>
+            <mat-card-content>
+              <!-- Add your content here -->
+            </mat-card-content>
+          </div>
+        </mat-card>
+
+        <mat-card class="small-card" (click)="navigateToReceive()">
+          <div class="card-content">
+            <img mat-card-image src="assets/img/incoming.png" alt="Recevoir Image" (click)="navigateToReceive()">
+            <mat-card-title>Recevoir</mat-card-title>
+            <mat-card-content>
+              <!-- Add your content here -->
+            </mat-card-content>
+          </div>
+        </mat-card>
+      </div>
+
+
+    </div>
+  </mat-card-content>
+</mat-card>

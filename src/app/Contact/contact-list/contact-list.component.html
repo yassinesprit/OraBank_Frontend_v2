@@ -1,0 +1,43 @@
+<mat-card class="main-card">
+  <mat-card-title>Contacts</mat-card-title>
+  <mat-card-content>
+    <!-- Pagination Controls -->
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+    <!-- Data Table -->
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 full-width-table">
+
+     <!-- &lt;!&ndash; ID Column &ndash;&gt;
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>-->
+
+      <!-- Nom Column -->
+      <ng-container matColumnDef="nom">
+        <th mat-header-cell *matHeaderCellDef> Nom </th>
+        <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+      </ng-container>
+
+      <!-- Compte Bancaire Column -->
+      <ng-container matColumnDef="compteBancaire">
+        <th mat-header-cell *matHeaderCellDef> Compte Bancaire </th>
+        <td mat-cell *matCellDef="let element"> {{element.compteBancaire.numeroCompte}} </td>
+      </ng-container>
+
+      <!-- Utilisateur Column -->
+      <ng-container matColumnDef="utilisateur">
+        <th mat-header-cell *matHeaderCellDef> Utilisateur </th>
+        <td mat-cell *matCellDef="let element"> {{element.utilisateur.username}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Empty Table Message -->
+      <tr *ngIf="dataSource.data.length === 0">
+        <td colspan="4" class="empty-table-message">Pas de contact encore</td>
+      </tr>
+    </table>
+  </mat-card-content>
+</mat-card>

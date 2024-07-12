@@ -1,0 +1,16 @@
+.main-card {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Adjust gap between cards */
+}
+
+.account-card {
+  width: 300px; /* Fixed width or adjust as needed */
+  cursor: pointer;
+}

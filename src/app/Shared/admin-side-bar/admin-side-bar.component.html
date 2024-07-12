@@ -1,0 +1,105 @@
+<mat-toolbar class="custom-toolbar">
+
+  <img src="assets/img/ora.png" alt="Logo" class="logo">
+  <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" class="toggle-button">
+    <mat-icon>menu</mat-icon>
+
+  </button>
+  <span class="spacer"></span>
+  <!-- Notifications Button -->
+  <button
+    type="button"
+    aria-label="Notifications"
+    mat-icon-button
+    class="notifications-button"
+    matBadge="{{notificationCount}}"
+    matBadgePosition="before"
+    [matMenuTriggerFor]="notificationMenu">
+    <mat-icon>notifications</mat-icon>
+  </button>
+
+
+  <button mat-icon-button [matMenuTriggerFor]="userMenu" class="user-button">
+    <img src="assets/img/profile-img.jpg" alt="User Pic" class="user-pic">
+  </button>
+  <mat-menu #userMenu="matMenu" >
+    <button mat-menu-item routerLink="/admin/detailUser">
+      <mat-icon>account_circle</mat-icon>
+      <span>Profile</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span >Se deconnécter</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
+<!-- Notifications Menu -->
+<mat-menu #notificationMenu="matMenu" class="custom-notification-menu" xPosition="after">
+  <ng-container *ngIf="notifications.length > 0; else noNotifications">
+    <li class="dropdown-header">
+      {{ notificationCount }} nouvelles notifications
+      <button type="button" class="btn btn-sm btn-success" (click)="markNotificationsAsRead()" [disabled]="notificationCount === 0">
+        Archiver tout
+      </button>
+
+    </li>
+    <mat-divider></mat-divider>
+    <div class="notification-list">
+      <button mat-menu-item *ngFor="let notification of notifications">
+        <div class="notification-item">
+          <h4>{{ notification.titre }}</h4>
+          <p>{{ notification.message }}</p>
+          <p class="timestamp">{{ notification.timestamp | date:'shortTime' }}</p>
+        </div>
+      </button>
+    </div>
+  </ng-container>
+  <ng-template #noNotifications>
+    <button mat-menu-item disabled>
+      No notifications
+    </button>
+  </ng-template>
+</mat-menu>
+<mat-sidenav-container class="sidenav-container">
+
+  <mat-sidenav #drawer class="sidenav" mode="side" opened class="sidenav custom-sidenav">
+    <mat-toolbar class="side-nav-toolbar">
+      <!-- Your logo goes here -->
+      <!-- Example: <img src="your_logo.png" alt="Logo"> -->
+      <!-- Adjust the height and width of the logo as needed -->
+      <span>Menu</span>
+    </mat-toolbar>
+    <mat-nav-list class="side-nav-list">
+      <a mat-list-item routerLink="/admin/home">Acceuil</a>
+      <a mat-list-item>Dashboard</a>
+      <a mat-list-item routerLink="/admin/users">Liste des utilisateurs</a>
+      <a mat-list-item routerLink="/admin/BAchoose">Choisir mon compte bancaire</a>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Transfert
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLink="/admin/transfer">Transactions</a>
+        <a mat-list-item routerLink="/admin/send-form">Transférer</a>
+        <a mat-list-item routerLink="/admin/receive-form">Recevoir</a>
+        <a mat-list-item routerLink="/admin/list-transfer">Liste des Transferts</a>
+        <a mat-list-item routerLink="/admin/list-demande">Liste des Demandes de paiement</a>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Alias
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLink="/admin/alias/{{compteBancaireId}}">Mon Alias</a>
+        <a mat-list-item routerLink="/admin/aliasform">Créer Alias</a>
+      </mat-expansion-panel>
+      <a mat-list-item routerLink="/admin/list-contact">Liste des contacts</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

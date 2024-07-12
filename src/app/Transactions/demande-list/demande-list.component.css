@@ -1,0 +1,41 @@
+.main-card {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-column-statusTransfert {
+  text-align: center;
+}
+
+.status-img {
+  width: 24px;
+  height: 24px;
+}
+
+.toggle-container {
+  margin-bottom: 16px;
+}
+
+.empty-message {
+  text-align: center;
+  margin-top: 16px;
+  color: #888;
+}
+
+.mat-elevation-z8 {
+  margin-bottom: 16px;
+}

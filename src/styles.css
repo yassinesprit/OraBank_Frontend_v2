@@ -1,3 +1,163 @@
-/* You can add global styles to this file, and also import other style files */
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body, html {
+  /*background: url('/assets/front/images/background.jpg') no-repeat center center fixed;*/
+  background-size: cover;
+  color: #000000;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.sidebar-container {
+  height: 100%;
+}
+
+.sidebar {
+  background-color: #333;
+  color: #fff;
+}
+
+.sidebar-header {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #ffd700;
+}
+
+.sidebar-logo {
+  height: 40px;
+  margin-left: 10px;
+}
+
+.sidebar-nav {
+  padding: 20px;
+}
+
+.mat-nav-list {
+  padding: 0;
+  list-style: none;
+}
+
+.mat-list-item {
+  padding: 10px 0;
+}
+
+.mat-list-item:hover {
+  background-color: #444;
+}
+
+.link-text {
+  margin-left: 10px;
+}
+
+.mat-sidenav {
+  background-color: #000000;
+}
+
+.mat-sidenav mat-nav-list a.mat-list-item {
+  color: #ab873e;
+}
+
+/* Define custom black palette */
+.black-50 { color: #e0e0e0; }
+.black-100 { color: #b3b3b3; }
+.black-200 { color: #808080; }
+.black-300 { color: #4d4d4d; }
+.black-400 { color: #262626; }
+.black-500 { color: #000000; }
+.black-600 { color: #000000; }
+.black-700 { color: #000000; }
+.black-800 { color: #000000; }
+.black-900 { color: #000000; }
+.black-A100 { color: #d5d5d5; }
+.black-A200 { color: #aaaaaa; }
+.black-A400 { color: #303030; }
+.black-A700 { color: #616161; }
+
+.black-contrast-50 { color: #ffffff; }
+.black-contrast-100 { color: #ffffff; }
+.black-contrast-200 { color: #ffffff; }
+.black-contrast-300 { color: #ffffff; }
+.black-contrast-400 { color: #ffffff; }
+.black-contrast-500 { color: #ffffff; }
+.black-contrast-600 { color: #ffffff; }
+.black-contrast-700 { color: #ffffff; }
+.black-contrast-800 { color: #ffffff; }
+.black-contrast-900 { color: #ffffff; }
+.black-contrast-A100 { color: #000000; }
+.black-contrast-A200 { color: #000000; }
+.black-contrast-A400 { color: #000000; }
+.black-contrast-A700 { color: #000000; }
+
+/* Define custom gold palette */
+.gold-50 { color: #c08329; }
+.gold-100 { color: #c08329; }
+.gold-200 { color: #c08329; }
+.gold-300 { color: #c08329; }
+.gold-400 { color: #c08329; }
+.gold-500 { color: #c08329; }
+.gold-600 { color: #c08329; }
+.gold-700 { color: #c08329; }
+.gold-800 { color: #c08329; }
+.gold-900 { color: #c08329; }
+.gold-A100 { color: #c08329; }
+.gold-A200 { color: #c08329; }
+.gold-A400 { color: #c08329; }
+.gold-A700 { color: #c08329; }
+
+.gold-contrast-50 { color: #ffffff; }
+.gold-contrast-100 { color: #ffffff; }
+.gold-contrast-200 { color: #ffffff; }
+.gold-contrast-300 { color: #ffffff; }
+.gold-contrast-400 { color: #ffffff; }
+.gold-contrast-500 { color: #ffffff; }
+.gold-contrast-600 { color: #ffffff; }
+.gold-contrast-700 { color: #ffffff; }
+.gold-contrast-800 { color: #ffffff; }
+.gold-contrast-900 { color: #ffffff; }
+.gold-contrast-A100 { color: #ffffff; }
+.gold-contrast-A200 { color: #ffffff; }
+.gold-contrast-A400 { color: #ffffff; }
+.gold-contrast-A700 { color: #ffffff; }
+
+/* Define custom white palette */
+.white-50 { color: #ffffff; }
+.white-100 { color: #ffffff; }
+.white-200 { color: #ffffff; }
+.white-300 { color: #ffffff; }
+.white-400 { color: #ffffff; }
+.white-500 { color: #ffffff; }
+.white-600 { color: #ffffff; }
+.white-700 { color: #ffffff; }
+.white-800 { color: #ffffff; }
+.white-900 { color: #ffffff; }
+.white-A100 { color: #ffffff; }
+.white-A200 { color: #ffffff; }
+.white-A400 { color: #ffffff; }
+.white-A700 { color: #ffffff; }
+
+.white-contrast-50 { color: #000000; }
+.white-contrast-100 { color: #000000; }
+.white-contrast-200 { color: #000000; }
+.white-contrast-300 { color: #000000; }
+.white-contrast-400 { color: #000000; }
+.white-contrast-500 { color: #000000; }
+.white-contrast-600 { color: #000000; }
+.white-contrast-700 { color: #000000; }
+.white-contrast-800 { color: #000000; }
+.white-contrast-900 { color: #000000; }
+.white-contrast-A100 { color: #000000; }
+.white-contrast-A200 { color: #000000; }
+.white-contrast-A400 { color: #000000; }
+.white-contrast-A700 { color: #000000; }
+
+/* Angular Material styles are not directly translatable to CSS without the actual library processing */

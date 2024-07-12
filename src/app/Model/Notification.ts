@@ -1,6 +1,6 @@
 export class Notification {
   id!: number;
   message!: string;
-  is_read!: boolean;
+  lu!: boolean;
   date!: Date;
 }

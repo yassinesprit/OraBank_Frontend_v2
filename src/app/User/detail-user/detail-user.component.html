@@ -1,0 +1,15 @@
+<div class="profile-container" *ngIf="user">
+  <div class="profile-header">
+    <img src="assets/img/profile-img.jpg" alt="Profile Picture" class="profile-picture">
+    <h2>{{ user.nom }} {{ user.prenom }}</h2>
+    <p>{{ user.email }}</p>
+  </div>
+  <div class="profile-details">
+    <p><strong>Nom d'utlisateur:</strong> {{ user.username }}</p>
+    <p><strong>Telephone:</strong> {{ user.telephone }}</p>
+    <p><strong>Langue:</strong> {{ user.langue }}</p>
+    <p><strong>Statut:</strong> {{ user.statut ? 'Active' : 'Inactive' }}</p>
+    <p><strong>Role:</strong> {{ user.role }}</p>
+    <p><strong>Client:</strong> {{ user.client.nom }}</p> <!-- Adjust this based on your Client model -->
+  </div>
+</div>

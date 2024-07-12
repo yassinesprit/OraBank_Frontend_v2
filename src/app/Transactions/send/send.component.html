@@ -1,0 +1,190 @@
+<div class="main-container">
+  <h1 class="main-title">Transferer</h1>
+
+  <mat-card class="main-card">
+    <mat-card-title>Par Alias</mat-card-title>
+    <mat-card-content>
+      <form #aliasForm="ngForm" (ngSubmit)="onSubmitParAlias(aliasForm)" class="form">
+        <!-- Alias Input -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Alias</mat-label>
+          <input matInput name="alias" ngModel required>
+          <mat-error *ngIf="aliasForm.controls['alias'].touched">
+            Champ obligatoire
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Montant Input -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Montant</mat-label>
+          <input matInput name="montant" type="number" ngModel required min="0.01" #montant="ngModel">
+          <mat-error *ngIf="montant.invalid && montant.touched">
+            <span *ngIf="montant.errors?.['required']">Montant est requis</span>
+            <span *ngIf="montant.errors?.['min']">Montant doit être supérieur à 0</span>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Note Input -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Note</mat-label>
+          <textarea matInput name="note" ngModel></textarea>
+        </mat-form-field>
+
+        <!-- Continuer Button -->
+        <div class="actions">
+          <button mat-raised-button color="primary" type="submit" [disabled]="aliasForm.invalid">Continuer</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="main-card">
+    <mat-card-title>Par IBAN</mat-card-title>
+    <mat-card-content>
+      <form #ibanForm="ngForm" (ngSubmit)="onSubmitParIban(ibanForm)" class="form">
+        <!-- IBAN Input -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>IBAN</mat-label>
+          <input matInput name="iban" ngModel required>
+          <mat-error *ngIf="ibanForm.controls['iban'].invalid && ibanForm.controls['iban'].touched">
+            Champ obligatoire
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Pays de la banque Select -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Pays de la banque</mat-label>
+          <mat-select name="paysBanque" ngModel required>
+            <mat-option value="Togo">Togo</mat-option>
+            <mat-option value="Mali">Mali</mat-option>
+            <mat-option value="Angola">Angola</mat-option>
+            <!-- Add other countries as needed -->
+          </mat-select>
+          <mat-error *ngIf="ibanForm.controls['paysBanque'].invalid && ibanForm.controls['paysBanque'].touched">
+            Champ obligatoire
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Nom de la banque Input -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Nom de la banque</mat-label>
+          <input matInput name="nomBanque" ngModel required>
+          <mat-error *ngIf="ibanForm.controls['nomBanque'].invalid && ibanForm.controls['nomBanque'].touched">
+            Champ obligatoire
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Montant Input -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Montant</mat-label>
+          <input matInput name="montant" type="number" ngModel required min="0.01" #montant="ngModel">
+          <mat-error *ngIf="montant.invalid && montant.touched">
+            <span *ngIf="montant.errors?.['required']">Montant est requis</span>
+            <span *ngIf="montant.errors?.['min']">Montant doit être supérieur à 0</span>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Note Input -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Note</mat-label>
+          <textarea matInput name="note" ngModel></textarea>
+        </mat-form-field>
+
+        <!-- Continuer Button -->
+        <div class="actions">
+          <button mat-raised-button color="primary" type="submit" [disabled]="ibanForm.invalid">Continuer</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="main-card">
+    <mat-card-title>Par Autre Compte</mat-card-title>
+    <mat-card-content>
+      <form #autreCompteForm="ngForm" (ngSubmit)="onSubmitParAutre(autreCompteForm)" class="form">
+        <!-- Numero de compte Input -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Numero de compte</mat-label>
+          <input matInput name="numeroCompte" ngModel required>
+          <mat-error *ngIf="autreCompteForm.controls['numeroCompte'].invalid && autreCompteForm.controls['numeroCompte'].touched">
+            Champ obligatoire
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Pays de la banque Select -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Pays de la banque</mat-label>
+          <mat-select name="paysBanque" ngModel required>
+            <mat-option value="France">France</mat-option>
+            <mat-option value="Germany">Germany</mat-option>
+            <mat-option value="Italy">Italy</mat-option>
+            <!-- Add other countries as needed -->
+          </mat-select>
+          <mat-error *ngIf="autreCompteForm.controls['paysBanque'].invalid && autreCompteForm.controls['paysBanque'].touched">
+            Champ obligatoire
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Nom de l'institut financier Input -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Nom de l'institut financier</mat-label>
+          <input matInput name="nomInstitut" ngModel required>
+          <mat-error *ngIf="autreCompteForm.controls['nomInstitut'].invalid && autreCompteForm.controls['nomInstitut'].touched">
+            Champ obligatoire
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Montant Input -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Montant</mat-label>
+          <input matInput name="montant" type="number" ngModel required min="0.01" #montant="ngModel">
+          <mat-error *ngIf="montant.invalid && montant.touched">
+            <span *ngIf="montant.errors?.['required']">Montant est requis</span>
+            <span *ngIf="montant.errors?.['min']">Montant doit être supérieur à 0</span>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Note Input -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Note</mat-label>
+          <textarea matInput name="note" ngModel></textarea>
+        </mat-form-field>
+
+        <!-- Continuer Button -->
+        <div class="actions">
+          <button mat-raised-button color="primary" type="submit" [disabled]="autreCompteForm.invalid">Continuer</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="main-card">
+    <mat-card-title>Ajouter un contact</mat-card-title>
+    <mat-card-content>
+      <form #contactForm="ngForm" (ngSubmit)="onSubmitContact(contactForm)" class="form">
+        <!-- Nom et Prénom Input -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Nom et Prénom</mat-label>
+          <input matInput name="nomPrenom" ngModel required>
+          <mat-error *ngIf="contactForm.controls['nomPrenom'].invalid && contactForm.controls['nomPrenom'].touched">
+            Champ obligatoire
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Numero de compte Input -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Numero de compte</mat-label>
+          <input matInput name="numeroCompte" ngModel required>
+          <mat-error *ngIf="contactForm.controls['numeroCompte'].invalid && contactForm.controls['numeroCompte'].touched">
+            Champ obligatoire
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Continuer Button -->
+        <div class="actions">
+          <button mat-raised-button color="primary" type="submit" [disabled]="contactForm.invalid">Continuer</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,54 +1,98 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './Shared/Pages/header/header.component';
-import { FooterComponent } from './Shared/Pages/footer/footer.component';
-import { SideBarComponent } from './Shared/Pages/side-bar/side-bar.component';
-import {FormsModule} from "@angular/forms";
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
+import {SideBarComponent} from './Shared/side-bar/side-bar.component';
+import {AdminSideBarComponent} from './Shared/admin-side-bar/admin-side-bar.component';
 import {CommonModule} from "@angular/common";
-import { LoginComponent } from './login/login.component';
-import { DisplayAliasComponent } from './Alias/display-alias/display-alias.component';
-import {QRCodeModule} from "angularx-qrcode";
+import {MatSidenav, MatSidenavContainer, MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import { ChoisirCompteComponent } from './CompteBancaire/choisir-compte/choisir-compte.component';
-import {AuthGuard} from "./Services/Securité/auth.guard";
-import {JwtInterceptor} from "./Services/Securité/jwt.interceptor";
-import {ClipboardModule} from "ngx-clipboard";
-import { AliasFormComponent } from './Alias/alias-form/alias-form.component';
-import { HomeComponent } from './Pages/home/home.component';
-import { TransactionComponent } from './transaction/transaction.component';
-import { TransfererComponent } from './transaction/transferer/transferer.component';
-import {NotificationService} from "./Services/WebSocket/notification.service";
+import {MatError, MatInputModule} from "@angular/material/input";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatButtonModule} from "@angular/material/button";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatTableModule} from "@angular/material/table";
+import {MatIcon, MatIconModule} from "@angular/material/icon";
+import {MatOption, MatSelect, MatSelectModule} from "@angular/material/select";
+import {MatCheckbox} from "@angular/material/checkbox";
+import {MatMenu, MatMenuModule} from "@angular/material/menu";
+import {MatCardModule} from "@angular/material/card";
+import {LoginComponent} from './login/login.component';
+import {AuthGuard} from "./Security/auth.guard";
+import {JwtInterceptor} from "./Security/jwt.interceptor";
 import {Client, Stomp} from "@stomp/stompjs";
+import {NotificationService} from "./Services/notification.service";
+import {MatBadgeModule} from "@angular/material/badge";
+import {HomeComponent} from './home/home.component';
+import {AliasFormComponent} from './Alias/alias-form/alias-form.component';
+import {AliasDisplayComponent} from './Alias/alias-display/alias-display.component';
+import {BAChooseComponent} from './BankAccount/ba-choose/ba-choose.component';
+import {TransferComponent} from './Transactions/transfer/transfer.component';
+import {MatDividerModule} from "@angular/material/divider";
+import {QRCodeModule} from "angularx-qrcode";
+import {ClipboardModule} from "ngx-clipboard";
+import {MatAccordion, MatExpansionModule, MatExpansionPanel} from "@angular/material/expansion";
+import {SendComponent} from './Transactions/send/send.component';
+import {ReceiveComponent} from './Transactions/receive/receive.component';
+import {ListUsersComponent} from './User/list-users/list-users.component';
+import {TransactionsListComponent} from './Transactions/transactions-list/transactions-list.component';
+import {MatPaginator} from "@angular/material/paginator";
+import {ContactListComponent} from './Contact/contact-list/contact-list.component';
+import {DemandeListComponent} from './Transactions/demande-list/demande-list.component';
+import {ErrorComponent} from './Shared/error/error.component';
+import { DetailUserComponent } from './User/detail-user/detail-user.component';
+import { UnauthorizedComponent } from './Shared/unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
     SideBarComponent,
+    AdminSideBarComponent,
     LoginComponent,
-    DisplayAliasComponent,
-    ChoisirCompteComponent,
-    AliasFormComponent,
     HomeComponent,
-    TransactionComponent,
-    TransfererComponent,
+    AliasFormComponent,
+    AliasDisplayComponent,
+    BAChooseComponent,
+    TransferComponent,
+    SendComponent,
+    ReceiveComponent,
+    ListUsersComponent,
+    TransactionsListComponent,
+    ContactListComponent,
+    DemandeListComponent,
+    ErrorComponent,
+    DetailUserComponent,
+    UnauthorizedComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     CommonModule,
+    MatSidenavModule,
+    MatSidenavModule,
+    MatListModule,
+    FormsModule, // Add FormsModule here
+    HttpClientModule, // Add HttpClientModule here
+    MatFormFieldModule,
+    MatButtonModule,
+    BrowserAnimationsModule,
+    MatListModule, MatToolbarModule, MatError, MatInputModule, MatTableModule, MatIcon,
+    ReactiveFormsModule, MatCheckbox, MatSidenavContainer, MatSidenav, MatSelect, MatOption, MatMenu, MatMenuModule, MatIconModule,
+    MatCardModule,
+    MatBadgeModule,
+    MatDividerModule,
     QRCodeModule,
-    HttpClientModule,
-    ClipboardModule
+    ClipboardModule, MatAccordion,
+    MatSelectModule, MatPaginator, MatExpansionPanel,MatExpansionModule
   ],
   providers: [
     AuthGuard,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {
       provide: NotificationService,
       useFactory: (client: Client) => {
@@ -60,7 +104,9 @@ import {Client, Stomp} from "@stomp/stompjs";
       provide: Client,
       useValue: Stomp.client('ws://localhost:9999/ws')
     },
+    provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

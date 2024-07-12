@@ -1,0 +1,19 @@
+<mat-card class="main-card">
+  <mat-card-header>
+    <mat-card-title>Vos Comptes</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="card-container">
+      <mat-card class="account-card" *ngFor="let item of list" (click)="redirectAfterVarif(item.id)">
+        <mat-card-header>
+          <mat-card-title>{{ item.libelle }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Numéro de compte: {{ item.numeroCompte }}</p>
+          <p>Votre Solde: {{ item.solde }}</p>
+          <p>Date de création: {{ item.dateDeCreation | date }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-card-content>
+</mat-card>

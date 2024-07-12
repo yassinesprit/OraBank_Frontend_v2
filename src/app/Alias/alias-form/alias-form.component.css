@@ -1,19 +1,26 @@
-.error {
-  border-color: red;
+.main-card {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Adjust gap between cards */
+}
+
+.full-width {
+  width: 80%;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
 }
 
 .error-messages {
   color: red;
   font-size: 12px;
-  margin-top: 4px;
-  position: absolute;
-  bottom: -16px; /* Adjust this value as needed */
-}
-
-.hover\:bg-green-700:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 105 62 / var(--tw-bg-opacity));
-}
-.input-group{
-  position: relative;
 }

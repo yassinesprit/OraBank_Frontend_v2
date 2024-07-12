@@ -1,115 +1,104 @@
-<main id="main" class="main">
+<mat-card class="main-card">
+  <mat-card-title> Choisir l'adresse de paiement
+  </mat-card-title>
+  <br>
+  <mat-card-content>
+    <div class="card-container">
 
-  <div class="pagetitle">
-    <h1>Alias</h1>
-    <nav>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item">Alias</li>
-      </ol>
-    </nav>
-  </div><!-- End Page Title -->
+      <form #adresseForm="ngForm" (ngSubmit)="createAliasAdresse('ParAdresse', adresseForm,adresseForm.controls['selectcompte'].value.id)">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Choisir votre compte bancaire :</mat-label>
+          <mat-select
+            name="selectcompte"
+            required
+            ngModel
+            id="selectcompte"
+            #selectcompte="ngModel">
+            <mat-option *ngFor="let compte of list" [value]="compte">{{ compte.libelle }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="selectcompte.touched" >
+            <span *ngIf="selectcompte.errors?.['required']">Obligatoire</span>
+          </mat-error>
+        </mat-form-field>
+        <div class="actions">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="adresseForm.invalid">
+            Créer alias
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>
+<mat-card class="main-card">
+  <mat-card-title> Choisir Numero de Telephone
+  </mat-card-title>
+  <br>
+  <mat-card-content>
+    <div class="card-container">
 
-  <section class="section">
-    <div class="row">
-      <div class="col-lg-12">
+      <form #telForm="ngForm" (ngSubmit)="createAliasTel('ParTelephone', telForm,telForm.controls['selectcompte_tel'].value.id)">
+        <!-- Bank Account Select -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Choisir votre compte bancaire :</mat-label>
+          <mat-select
+            name="selectcompte_tel"
+            required
+            ngModel
+            id="selectedCompte_tel"
+            #selectcompte_tel="ngModel">
+            <mat-option *ngFor="let compte of list" [value]="compte">{{ compte.libelle }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="selectcompte_tel.touched" >
+            <span *ngIf="selectcompte_tel.errors?.['required']">Obligatoire</span>
+          </mat-error>
+        </mat-form-field>
 
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Alias</h5>
+        <!-- Country Code and Phone Number Inputs -->
+        <div class="country-phone">
+          <mat-form-field appearance="fill" class="country-select">
+            <mat-label>Code Pays :</mat-label>
+            <mat-select
+              name="selectCountryCode"
+              required
+              ngModel
+              id="selectedCountryCode"
+              #selectCountryCode="ngModel">
+              <mat-option *ngFor="let code of countryCodes" [value]="code">{{ code.name }}
+                : {{code.dial_code}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="selectCountryCode.touched">
+              <span *ngIf="selectCountryCode.errors?.['required']">Obligatoire</span>
+            </mat-error>
 
-            <!-- Accordion without outline borders -->
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingOne">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                    Choisir l'adresse de paiement
-                  </button>
-                </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                     data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body">
-                    <form class="row g-3">
+          </mat-form-field>
 
-                      <div class="col-12">
-                        <label for="comptebancaire1" class="form-label">Choisir votre compte bancaire :</label>
-                        <div class="input-group">
-                          <select [(ngModel)]="selectedCompte" name="compte" class="form-select" required
-                                  #selectcompte="ngModel"
-                                  [ngClass]="{ 'error': selectcompte.invalid && selectcompte.touched }">
-                            <option *ngFor="let compte of list" [value]="compte.id" >{{ compte.libelle }}</option>
-                          </select>
-                          <br>
-                          <div *ngIf="selectcompte.touched" class="error-messages">
-                            <div *ngIf="selectcompte.errors?.['required']">Obligatoire</div>
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                      <button class="btn btn-primary-green w-100" type="submit" (click)="createAlias('ParAdresse',selectedCompte)">
-                        Continuer
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingTwo">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                    Choisir Numero de Telephone
-                  </button>
-                </h2>
-                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
-                     data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body">
-                    <form class="row g-3 ">
-
-                      <div class="col-12">
-                        <label for="phone" class="form-label">Phone Number</label>
-                        <div class="input-group">
-                          <select name="country_code" class="form-select" id="country_code"></select>
-                          <input type="text" name="phone_number" class="form-control" id="phone"
-                                 placeholder="Phone Number" required minlength="8" [(ngModel)]="telephone"
-                                 #tel="ngModel" [ngClass]="{ 'error': tel.invalid && tel.touched }">
-                          <div *ngIf="tel.invalid && tel.touched" class="error-messages">
-                            <div *ngIf="tel.errors?.['required']">Obligatoire</div>
-                            <div *ngIf="tel.errors?.['minlength']">Longueur Minimale : 8</div>
-                          </div>
-                        </div>
-                        <br>
-                        <label for="comptebancaire1" class="form-label">Choisir votre compte bancaire :</label>
-                        <div class="input-group">
-                          <select [(ngModel)]="selectedCompte" name="compte" class="form-select" required
-                                  #selectcompte1="ngModel"
-                                  [ngClass]="{ 'error': selectcompte1.invalid && selectcompte1.touched }">
-                            <option *ngFor="let compte of list" [value]="compte.id">{{ compte.libelle }}</option>
-                          </select>
-                          <br>
-                          <div *ngIf="selectcompte1.touched" class="error-messages">
-                            <div *ngIf="selectcompte1.errors?.['required']">Obligatoire</div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <button class="btn btn-primary-green w-100" type="submit" (click)="createAlias('ParTelephone',selectedCompte)">
-                        Continuer
-                      </button>
-                    </form>
-
-                  </div>
-                </div>
-              </div>
-
-            </div><!-- End Accordion without outline borders -->
-
-          </div>
+          <mat-form-field appearance="fill" class="phone-input">
+            <mat-label>Numéro de Téléphone :</mat-label>
+            <input matInput
+                   type="text"
+                   ngModel
+                   id="telephone"
+                   name="telephone"
+                   required
+                   minlength="8"
+                   #tel="ngModel">
+            <mat-error *ngIf="tel.invalid && tel.touched">
+              <span *ngIf="tel.errors?.['required']">Obligatoire</span>
+              <span *ngIf="tel.errors?.['minlength']">Longueur Minimale : 8</span>
+            </mat-error>
+          </mat-form-field>
         </div>
 
-      </div>
+        <!-- Submit Button -->
+        <div class="actions">
+          <button mat-raised-button color="primary" type="submit" [disabled]="telForm.invalid">Créer alias
+          </button>
+        </div>
+      </form>
     </div>
-  </section>
-
-</main><!-- End #main -->
+  </mat-card-content>
+</mat-card>

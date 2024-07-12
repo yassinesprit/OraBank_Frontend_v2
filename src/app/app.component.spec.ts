@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'OraBank-V4'`, () => {
+  it(`should have as title 'OraBank-frontend-v5'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('OraBank-V4');
+    expect(app.title).toEqual('OraBank-frontend-v5');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, OraBank-V4');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, OraBank-frontend-v5');
   });
 });

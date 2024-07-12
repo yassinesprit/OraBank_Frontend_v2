@@ -1,0 +1,27 @@
+.main-card {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-column-statusTransfert {
+  text-align: center;
+}
+
+.status-img {
+  width: 24px;
+  height: 24px;
+}

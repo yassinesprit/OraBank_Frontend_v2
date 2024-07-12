@@ -1,0 +1,38 @@
+.main-container {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.main-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.main-card {
+  width: 80%;
+  margin: 20px auto 40px; /* Add extra space at the bottom */
+  padding: 20px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Add space under the last card */
+.main-card:last-child {
+  margin-bottom: 40px; /* Adjust the value to create the desired space */
+}
