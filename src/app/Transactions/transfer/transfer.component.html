@@ -8,18 +8,7 @@
           <h6 class="solde-text">${{ compte.solde }}$</h6>
         </mat-card-content>
       </mat-card>
-
-
-      <!-- Second Row -->
-      <mat-card class="large-card" (click)="navigateToDetailsTransfer()">
-        <mat-card-title>Détails anciennes Transactions</mat-card-title>
-        <mat-card-content>
-          <a class="lien-text" (click)="navigateToDetailsTransfer()" >Details</a>
-        </mat-card-content>
-      </mat-card>
-
-
-      <!-- Third Row -->
+      <!-- fourth Row -->
       <div class="row">
         <mat-card class="small-card" (click)="navigateToSend()">
           <div class="card-content">
@@ -41,6 +30,24 @@
           </div>
         </mat-card>
       </div>
+
+      <!-- Second Row -->
+      <mat-card class="large-card" (click)="navigateToDetailsTransfer()">
+        <mat-card-title>Détails anciennes Transactions</mat-card-title>
+        <mat-card-content>
+          <a class="lien-text" (click)="navigateToDetailsTransfer()" >Details</a>
+        </mat-card-content>
+      </mat-card>
+      <!-- third Row -->
+      <mat-card class="large-card" (click)="navigateToDetailsDemande()">
+        <mat-card-title>Liste des Demandes de paiement</mat-card-title>
+        <mat-card-content>
+          <a class="lien-text" (click)="navigateToDetailsDemande()" >Details</a>
+        </mat-card-content>
+      </mat-card>
+
+
+
 
 
     </div>

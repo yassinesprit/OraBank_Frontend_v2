@@ -53,6 +53,7 @@ export class HomeComponent implements OnInit {
         this.router.navigateByUrl('/admin/BAchoose');
       } else {
         this.router.navigateByUrl('/user/BAchoose');
-      }    }
+      }
+    }
   }
 }

@@ -1230,6 +1230,7 @@ export class AliasFormComponent implements OnInit {
   list!: CompteBancaire[];
   telephone: string="";
   private compteBancaireId: number = 0;
+  role = localStorage.getItem('role') ?? '';
 
   constructor(private router: Router,
               private compteBancaire: BankAccountService,
@@ -1270,13 +1271,19 @@ export class AliasFormComponent implements OnInit {
       response => {
         // Handle the response from the alias service
         console.log('Alias created:', response);
+        console.log(response.id)
+        localStorage.setItem("alias",response.id);
+        value.resetForm();
         Swal.fire({
           title: "Parfait !",
           text: "Alias Créé!",
           icon: "success"
         });
-        this.router.navigate(["/monAlias/"+this.compteBancaireId]);
-      },
+        if (this.role === "[ROLE_Admin]") {
+          this.router.navigate(['/admin/alias/' + this.compteBancaireId]);
+        } else {
+          this.router.navigate(['/user/alias/' + this.compteBancaireId]);
+        }      },
       error => {
         // Handle any errors that occur during the alias service request
         console.error('Error creating alias:', error);
@@ -1295,14 +1302,21 @@ export class AliasFormComponent implements OnInit {
     );
     this.aliasService.createAlias(aliasRequest).subscribe(
       response => {
+        console.log(response.id)
+        localStorage.setItem("alias",response.alias);
         // Handle the response from the alias service
         console.log('Alias created:', response);
+        value.resetForm();
         Swal.fire({
           title: "Parfait !",
           text: "Alias Créé!",
           icon: "success"
         });
-        this.router.navigate(["/monAlias/"+this.compteBancaireId]);
+        if (this.role === "[ROLE_Admin]") {
+          this.router.navigate(['/admin/alias/' + this.compteBancaireId]);
+        } else {
+          this.router.navigate(['/user/alias/' + this.compteBancaireId]);
+        }
       },
       error => {
         // Handle any errors that occur during the alias service request

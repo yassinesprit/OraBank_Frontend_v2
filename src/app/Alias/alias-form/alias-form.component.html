@@ -79,14 +79,16 @@
           <mat-form-field appearance="fill" class="phone-input">
             <mat-label>Numéro de Téléphone :</mat-label>
             <input matInput
-                   type="text"
+                   type="number"
                    ngModel
                    id="telephone"
                    name="telephone"
                    required
                    minlength="8"
+                   pattern="^[0-9]*$"
                    #tel="ngModel">
             <mat-error *ngIf="tel.invalid && tel.touched">
+              <span *ngIf="tel.errors?.['pattern']">Caractères Invalides</span>
               <span *ngIf="tel.errors?.['required']">Obligatoire</span>
               <span *ngIf="tel.errors?.['minlength']">Longueur Minimale : 8</span>
             </mat-error>

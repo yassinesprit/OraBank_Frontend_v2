@@ -70,21 +70,30 @@
       <span>Menu</span>
     </mat-toolbar>
     <mat-nav-list class="side-nav-list">
-      <a mat-list-item routerLink="/admin/home">Acceuil</a>
+      <a mat-list-item routerLink="/admin/home">Accueil</a>
       <a mat-list-item>Dashboard</a>
       <a mat-list-item routerLink="/admin/users">Liste des utilisateurs</a>
-      <a mat-list-item routerLink="/admin/BAchoose">Choisir mon compte bancaire</a>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Mon Compte Bancaire
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLink="/admin/BAchoose">Choisir mon compte bancaire</a>
+        <a mat-list-item  (click)="openDetailsDialog()">Détails Compte Bancaire</a>
+        <!--routerLink="/admin/BAdetails"-->
+      </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
             Transfert
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <a mat-list-item routerLink="/admin/transfer">Transactions</a>
-        <a mat-list-item routerLink="/admin/send-form">Transférer</a>
-        <a mat-list-item routerLink="/admin/receive-form">Recevoir</a>
-        <a mat-list-item routerLink="/admin/list-transfer">Liste des Transferts</a>
-        <a mat-list-item routerLink="/admin/list-demande">Liste des Demandes de paiement</a>
+        <a mat-list-item (click)="navigateToAliasTransactions()">Transactions</a>
+        <a mat-list-item (click)="navigateToAliasTransferer()">Transférer</a>
+        <a mat-list-item (click)="navigateToAliasRecevoir()">Recevoir</a>
+        <a mat-list-item (click)="navigateToAliasListTransfert()">Liste des Transferts</a>
+        <a mat-list-item (click)="navigateToAliasListDemandes()">Liste des Demandes de paiement</a>
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -92,10 +101,17 @@
             Alias
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <a mat-list-item routerLink="/admin/alias/{{compteBancaireId}}">Mon Alias</a>
-        <a mat-list-item routerLink="/admin/aliasform">Créer Alias</a>
+        <a mat-list-item (click)="navigateToAliasDetails()">Mon Alias</a>
       </mat-expansion-panel>
-      <a mat-list-item routerLink="/admin/list-contact">Liste des contacts</a>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Contacts
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLink="/admin/list-contact">Liste des contacts</a>
+        <a mat-list-item (click)="openContactDialog()">Ajouter un Contact</a>
+      </mat-expansion-panel>
     </mat-nav-list>
   </mat-sidenav>
 

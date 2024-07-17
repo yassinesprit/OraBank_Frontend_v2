@@ -18,11 +18,14 @@ import {ErrorComponent} from "./Shared/error/error.component";
 import {DetailUserComponent} from "./User/detail-user/detail-user.component";
 import {AuthGuard} from "./Security/auth.guard";
 import {UnauthorizedComponent} from "./Shared/unauthorized/unauthorized.component";
+import {DetailsBAComponent} from "./BankAccount/details-ba/details-ba.component";
 
 const routes: Routes = [
+  {path: '', pathMatch:"full", redirectTo: 'login'},
   {path: 'login', component: LoginComponent},
   {path: 'error', component: ErrorComponent},
   {path: '403', component: UnauthorizedComponent},
+
 
   {
     path: 'admin',
@@ -50,6 +53,7 @@ const routes: Routes = [
     children: [
       {path: 'home', component: HomeComponent},
       {path: 'BAchoose', component: BAChooseComponent},
+      {path: 'BAdetails', component: DetailsBAComponent},
       {path: 'transfer', component: TransferComponent},
       {path: 'list-transfer', component: TransactionsListComponent},
       {path: 'send-form', component: SendComponent},

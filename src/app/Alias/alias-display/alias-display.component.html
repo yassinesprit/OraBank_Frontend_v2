@@ -1,36 +1,21 @@
-<div class="main-container">
-  <h1 class="main-title">Alias</h1>
-  <mat-card class="mat-card mb-12">
-    <mat-card-content>
-      <div class="row g-0">
-        <div class="col-md-4">
-          <mat-card class="qr-card">
-            <qrcode [qrdata]="alias!.alias" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
-          </mat-card>
-        </div>
-        <div class="col-md-8">
-          <br>
-          <br>
-          <div class="d-flex w-100 justify-content-between align-items-center">
-            <h5 class="mb-1">L'Alias relatif à votre compte : <b>{{alias.alias}}</b></h5>
-            <br>
-            <br>
-            <button mat-icon-button ngxClipboard [cbContent]="alias.alias" (cbOnSuccess)="showNotification()">
-              <mat-icon>content_copy</mat-icon>
-            </button>
-            <div class="label">Copier</div>
-          </div>
-          <br>
-          <br>
-          <p class="mb-1">Type de l'Alias : <b>{{alias.type}}</b></p>
-          <div *ngIf="showCopiedNotification" class="notification">Copié dans le presse papier!</div>
-          <br>
-          <br>
-          <div class="d-grid gap-2 mt-3">
-            <button mat-button color="primary" (click)="navigateToBAchoose()">Changer le compte bancaire ?</button>
-          </div>
-        </div>
-      </div>
-    </mat-card-content>
-  </mat-card><!-- End Card with an image on left -->
-</div>
+<mat-card class="main-card">
+  <mat-card-title>Alias</mat-card-title>
+  <mat-card-content>
+    <div *ngIf="showCopiedNotification" class="notification">Copié dans le presse papier!</div>
+    <div class="qr-code">
+      <qrcode [qrdata]="alias!.alias" [width]="200" [errorCorrectionLevel]="'M'"></qrcode>
+    </div>
+    <div class="details">
+      <button mat-icon-button ngxClipboard [cbContent]="alias.alias" (cbOnSuccess)="showNotification()">
+        <mat-icon>content_copy</mat-icon>
+      </button>
+      <br>
+      <div class="label">Copier</div>
+      <p><strong>Alias:</strong> {{alias.alias}}</p>
+      <p><strong>Type:</strong> {{alias.type}}</p>
+    </div>
+    <div class="actions">
+      <button mat-button class="close-button" (click)="navigateToBAchoose()">Changer le compte bancaire ?</button>
+    </div>
+  </mat-card-content>
+</mat-card>

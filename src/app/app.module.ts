@@ -47,6 +47,9 @@ import {DemandeListComponent} from './Transactions/demande-list/demande-list.com
 import {ErrorComponent} from './Shared/error/error.component';
 import { DetailUserComponent } from './User/detail-user/detail-user.component';
 import { UnauthorizedComponent } from './Shared/unauthorized/unauthorized.component';
+import { DetailsBAComponent } from './BankAccount/details-ba/details-ba.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import { ContactFormComponent } from './Contact/contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +71,9 @@ import { UnauthorizedComponent } from './Shared/unauthorized/unauthorized.compon
     ErrorComponent,
     DetailUserComponent,
     UnauthorizedComponent,
+    DetailsBAComponent,
+    ContactFormComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -88,7 +94,8 @@ import { UnauthorizedComponent } from './Shared/unauthorized/unauthorized.compon
     MatDividerModule,
     QRCodeModule,
     ClipboardModule, MatAccordion,
-    MatSelectModule, MatPaginator, MatExpansionPanel,MatExpansionModule
+    MatSelectModule, MatPaginator, MatExpansionPanel,MatExpansionModule,
+    MatDialogModule
   ],
   providers: [
     AuthGuard,

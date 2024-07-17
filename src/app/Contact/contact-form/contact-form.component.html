@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Ajouter un contact</h1>
+<div mat-dialog-content>
+  <form #contactForm="ngForm" (ngSubmit)="onSubmitContact(contactForm)" class="form">
+    <!-- Nom et Prénom Input -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nom et Prénom</mat-label>
+      <input matInput name="nomPrenom" ngModel required>
+      <mat-error *ngIf="contactForm.controls['nomPrenom'].invalid && contactForm.controls['nomPrenom'].touched">
+        Champ obligatoire
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Numero de compte Input -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Numero de compte</mat-label>
+      <input matInput name="numeroCompte" ngModel required>
+      <mat-error *ngIf="contactForm.controls['numeroCompte'].invalid && contactForm.controls['numeroCompte'].touched">
+        Champ obligatoire
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Continuer Button -->
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="contactForm.invalid">Continuer</button>
+      <button mat-button mat-dialog-close class="close-button">Fermer</button>
+
+    </div>
+  </form>
+</div>

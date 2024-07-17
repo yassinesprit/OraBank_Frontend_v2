@@ -1,24 +1,64 @@
-.mat-card {
-  width: 80%;
+.main-card {
+  width: 100%;
+  max-width: 600px;
   margin: 20px auto;
   padding: 20px;
+  height: 500px; /* Set a fixed height for the card */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribute space between elements */
+  overflow: hidden; /* Ensure content doesn't overflow the card */
 }
 
-.qr-card {
-  padding: 16px;
+.mat-card-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.qr-code {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.details {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.notification {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.actions {
   text-align: center;
 }
 
+button[mat-button] {
+  margin-top: 20px;
+}
+
+button.close-button {
+  background-color: #cccccc;
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+button.close-button:hover {
+  background-color: #00693e;
+  color: white;
+}
+
+.mat-icon-button {
+  margin-right: 8px;
+}
 .notification {
   background-color: #d4edda;
   color: #155724;
   padding: 10px;
   border-radius: 4px;
-}
-
-.main-title {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 24px;
-  font-weight: bold;
 }

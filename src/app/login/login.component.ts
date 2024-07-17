@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
     let authAttempt = new AuthenticationRequest(userName, userPassword);
     this.loginService.login(authAttempt).subscribe(
       resp => {
+        loginForm.resetForm();
         const test = JSON.stringify(resp.body);
         const test1 = JSON.parse(test);
         console.log(test1.token);
@@ -45,12 +46,11 @@ export class LoginComponent implements OnInit {
           text: 'Vous êtes connectés en tant que ' + username,
           icon: 'success'
         });
-
         console.log(this.authService.getUserRole(test1.token));
         if (this.authService.getUserRole(test1.token) === '[ROLE_Admin]') {
           this.router.navigate(['/admin/home']);
         } else if (this.authService.getUserRole(test1.token) === '[ROLE_Utilisateur]') {
-          this.router.navigate(['/user']);
+          this.router.navigate(['/user/home']);
         }
       },
       error => {

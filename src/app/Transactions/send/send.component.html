@@ -17,10 +17,11 @@
         <!-- Montant Input -->
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Montant</mat-label>
-          <input matInput name="montant" type="number" ngModel required min="0.01" #montant="ngModel">
+          <input matInput name="montant" type="number" ngModel required min="0.01" pattern="^[0-9]*$" #montant="ngModel">
           <mat-error *ngIf="montant.invalid && montant.touched">
             <span *ngIf="montant.errors?.['required']">Montant est requis</span>
             <span *ngIf="montant.errors?.['min']">Montant doit être supérieur à 0</span>
+            <span *ngIf="montant.errors?.['pattern']">Caractères Invalides</span>
           </mat-error>
         </mat-form-field>
 
@@ -77,10 +78,11 @@
         <!-- Montant Input -->
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Montant</mat-label>
-          <input matInput name="montant" type="number" ngModel required min="0.01" #montant="ngModel">
+          <input matInput name="montant" type="number" ngModel pattern="^[0-9]*$" required min="0.01" #montant="ngModel">
           <mat-error *ngIf="montant.invalid && montant.touched">
             <span *ngIf="montant.errors?.['required']">Montant est requis</span>
             <span *ngIf="montant.errors?.['min']">Montant doit être supérieur à 0</span>
+            <span *ngIf="montant.errors?.['pattern']">Caractères Invalides</span>
           </mat-error>
         </mat-form-field>
 
@@ -137,10 +139,11 @@
         <!-- Montant Input -->
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Montant</mat-label>
-          <input matInput name="montant" type="number" ngModel required min="0.01" #montant="ngModel">
+          <input matInput name="montant" type="number" ngModel required pattern="^[0-9]*$" min="0.01" #montant="ngModel">
           <mat-error *ngIf="montant.invalid && montant.touched">
             <span *ngIf="montant.errors?.['required']">Montant est requis</span>
             <span *ngIf="montant.errors?.['min']">Montant doit être supérieur à 0</span>
+            <span *ngIf="montant.errors?.['pattern']">Caractères Invalides</span>
           </mat-error>
         </mat-form-field>
 

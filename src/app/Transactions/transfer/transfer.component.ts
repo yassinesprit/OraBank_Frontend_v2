@@ -66,4 +66,11 @@ export class TransferComponent implements OnInit {
       this.router.navigate(['/user/list-transfer']);
     }
   }
+  navigateToDetailsDemande() {
+    if (this.role === "[ROLE_Admin]") {
+      this.router.navigate(['/admin/list-demande']);
+    } else {
+      this.router.navigate(['/user/list-demande']);
+    }
+  }
 }

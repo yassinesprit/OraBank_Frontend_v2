@@ -34,6 +34,7 @@ export class BAChooseComponent implements OnInit {
     this.aliasService.retrieveByComptebancaire(id).subscribe(
       result => {
         console.log(id)
+        localStorage.setItem("compteBancaireId",id);
         if (this.role === "[ROLE_Admin]") {
           this.router.navigate(['/admin/alias/' + id]);
         } else {
@@ -43,6 +44,7 @@ export class BAChooseComponent implements OnInit {
       , error => {
         console.error(error);
         if (error.status === 500) {
+          localStorage.setItem("compteBancaireId",id);
           if (this.role === "[ROLE_Admin]") {
             this.router.navigate(['/admin/aliasform']);
           } else {
