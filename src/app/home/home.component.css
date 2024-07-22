@@ -11,7 +11,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: calc(100vh - 40px); /* Adjust to account for title margin */
+  height: calc(80vh - 40px); /* Adjust to account for title margin */
   padding: 20px;
   box-sizing: border-box;
 }

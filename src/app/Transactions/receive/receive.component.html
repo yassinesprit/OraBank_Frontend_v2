@@ -1,9 +1,7 @@
-<div class="main-container">
-  <h1 class="main-title">Demande Paiement</h1>
-
-  <mat-card class="main-card">
-    <mat-card-title>Par Alias</mat-card-title>
-    <mat-card-content>
+<mat-card class="alias-card">
+  <mat-card-title>Recevoir</mat-card-title>
+  <mat-tab-group animationDuration="1000ms">
+    <mat-tab label="Par Alias">
       <form #aliasForm="ngForm" (ngSubmit)="onSubmit(aliasForm)" class="form">
         <!-- Alias Input -->
         <mat-form-field appearance="fill" class="full-width">
@@ -36,12 +34,10 @@
           <button mat-raised-button color="primary" type="submit" [disabled]="aliasForm.invalid">Continuer</button>
         </div>
       </form>
-    </mat-card-content>
-  </mat-card>
 
-  <mat-card class="main-card">
-    <mat-card-title>Ajouter un contact</mat-card-title>
-    <mat-card-content>
+    </mat-tab>
+
+    <mat-tab label="Ajouter Contact">
       <form #contactForm="ngForm" (ngSubmit)="onSubmitContact(contactForm)" class="form">
         <!-- Nom et Prénom Input -->
         <mat-form-field appearance="fill" class="full-width">
@@ -66,6 +62,7 @@
           <button mat-raised-button color="primary" type="submit" [disabled]="contactForm.invalid">Continuer</button>
         </div>
       </form>
-    </mat-card-content>
-  </mat-card>
-</div>
+
+    </mat-tab>
+  </mat-tab-group>
+</mat-card>

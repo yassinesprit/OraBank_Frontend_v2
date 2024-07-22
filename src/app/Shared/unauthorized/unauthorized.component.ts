@@ -12,10 +12,7 @@ export class UnauthorizedComponent {
   constructor(private router: Router) {}
 
   redirectToHome() {
-    if (this.role === "[ROLE_Admin]") {
       this.router.navigateByUrl('/admin/home');
-    } else {
-      this.router.navigateByUrl('/user/home');
-    }
+
   }
 }

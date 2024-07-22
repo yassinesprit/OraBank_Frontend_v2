@@ -10,9 +10,9 @@
       </mat-card>
       <!-- fourth Row -->
       <div class="row">
-        <mat-card class="small-card" (click)="navigateToSend()">
+        <mat-card class="small-card" routerLink="/admin/send-form">
           <div class="card-content">
-            <img mat-card-image src="assets/img/outcoming.png" alt="Transferer Image" (click)="navigateToSend()">
+            <img mat-card-image src="assets/img/outcoming.png" alt="Transferer Image" routerLink="/admin/send-form">
             <mat-card-title>Transferer</mat-card-title>
             <mat-card-content>
               <!-- Add your content here -->
@@ -20,9 +20,9 @@
           </div>
         </mat-card>
 
-        <mat-card class="small-card" (click)="navigateToReceive()">
+        <mat-card class="small-card" routerLink="/admin/receive-form">
           <div class="card-content">
-            <img mat-card-image src="assets/img/incoming.png" alt="Recevoir Image" (click)="navigateToReceive()">
+            <img mat-card-image src="assets/img/incoming.png" alt="Recevoir Image" routerLink="/admin/receive-form">
             <mat-card-title>Recevoir</mat-card-title>
             <mat-card-content>
               <!-- Add your content here -->
@@ -32,17 +32,17 @@
       </div>
 
       <!-- Second Row -->
-      <mat-card class="large-card" (click)="navigateToDetailsTransfer()">
+      <mat-card class="large-card"  routerLink="/admin/list-transfer">
         <mat-card-title>Détails anciennes Transactions</mat-card-title>
         <mat-card-content>
-          <a class="lien-text" (click)="navigateToDetailsTransfer()" >Details</a>
+          <a class="lien-text"  routerLink="/admin/list-transfer">Details</a>
         </mat-card-content>
       </mat-card>
       <!-- third Row -->
-      <mat-card class="large-card" (click)="navigateToDetailsDemande()">
+      <mat-card class="large-card" routerLink="/user/list-demande">
         <mat-card-title>Liste des Demandes de paiement</mat-card-title>
         <mat-card-content>
-          <a class="lien-text" (click)="navigateToDetailsDemande()" >Details</a>
+          <a class="lien-text" routerLink="/user/list-demande" >Details</a>
         </mat-card-content>
       </mat-card>
 

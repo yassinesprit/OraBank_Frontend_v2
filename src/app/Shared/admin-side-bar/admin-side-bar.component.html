@@ -56,7 +56,7 @@
   </ng-container>
   <ng-template #noNotifications>
     <button mat-menu-item disabled>
-      No notifications
+      Pas de notifications
     </button>
   </ng-template>
 </mat-menu>
@@ -72,7 +72,9 @@
     <mat-nav-list class="side-nav-list">
       <a mat-list-item routerLink="/admin/home">Accueil</a>
       <a mat-list-item>Dashboard</a>
-      <a mat-list-item routerLink="/admin/users">Liste des utilisateurs</a>
+      <!-- Only show this menu item if the role is [ROLE_Admin] -->
+      <a mat-list-item *ngIf="role === '[ROLE_Admin]'" routerLink="/admin/users">Liste des utilisateurs</a>
+
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -80,9 +82,9 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <a mat-list-item routerLink="/admin/BAchoose">Choisir mon compte bancaire</a>
-        <a mat-list-item  (click)="openDetailsDialog()">Détails Compte Bancaire</a>
-        <!--routerLink="/admin/BAdetails"-->
+        <a mat-list-item (click)="openDetailsDialog()">Détails Compte Bancaire</a>
       </mat-expansion-panel>
+
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -95,6 +97,7 @@
         <a mat-list-item (click)="navigateToAliasListTransfert()">Liste des Transferts</a>
         <a mat-list-item (click)="navigateToAliasListDemandes()">Liste des Demandes de paiement</a>
       </mat-expansion-panel>
+
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -103,6 +106,7 @@
         </mat-expansion-panel-header>
         <a mat-list-item (click)="navigateToAliasDetails()">Mon Alias</a>
       </mat-expansion-panel>
+
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>

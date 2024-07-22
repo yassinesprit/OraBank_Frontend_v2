@@ -1,22 +1,22 @@
 <h1 mat-dialog-title class="title">Details Compte Bancaire</h1>
 <div mat-dialog-content>
   <div class="details-row">
-    <strong>RIB:</strong> <span>{{data.rib}}</span>
+    <strong>RIB:</strong> <span>{{compteBancaire.rib}}</span>
   </div>
   <div class="details-row">
-    <strong>Numéro de Compte:</strong> <span>{{data.numeroCompte}}</span>
+    <strong>Numéro de Compte:</strong> <span>{{compteBancaire.numeroCompte}}</span>
   </div>
   <div class="details-row">
-    <strong>Libellé:</strong> <span>{{data.libelle}}</span>
+    <strong>Libellé:</strong> <span>{{compteBancaire.libelle}}</span>
   </div>
   <div class="details-row">
-    <strong>Solde:</strong> <span>{{data.solde | currency}}</span>
+    <strong>Solde:</strong> <span>{{compteBancaire.solde | currency}}</span>
   </div>
   <div class="details-row">
-    <strong>Date de Création:</strong> <span>{{data.dateDeCreation | date}}</span>
+    <strong>Date de Création:</strong> <span>{{compteBancaire.dateDeCreation | date}}</span>
   </div>
   <div class="details-row">
-    <strong>Statut:</strong> <span>{{data.statut ? 'Actif' : 'Inactif'}}</span>
+    <strong>Statut:</strong> <span>{{compteBancaire.statut ? 'Actif' : 'Inactif'}}</span>
   </div>
 </div>
 <div class="actions">

@@ -22,18 +22,10 @@ export class HomeComponent implements OnInit {
 
 
     if (alias) {
-      if (this.role === "[ROLE_Admin]") {
-        this.router.navigateByUrl('/admin/alias/' + compteBancaireId);
-      } else {
-        this.router.navigateByUrl('/user/alias/' + compteBancaireId);
-      }
-
+      this.router.navigateByUrl('/admin/alias/' + compteBancaireId);
     } else {
-      if (this.role === "[ROLE_Admin]") {
-        this.router.navigateByUrl('/admin/BAchoose');
-      } else {
-        this.router.navigateByUrl('/user/BAchoose');
-      }
+      this.router.navigateByUrl('/admin/BAchoose');
+
     }
   }
 
@@ -42,18 +34,9 @@ export class HomeComponent implements OnInit {
     const compteBancaireId = localStorage.getItem('compteBancaireId');
 
     if (alias) {
-      if (this.role === "[ROLE_Admin]") {
-        this.router.navigateByUrl('/admin/transfer' );
-      } else {
-        this.router.navigateByUrl('/user/transfer' );
-      }
+      this.router.navigateByUrl('/admin/transfer');
     } else {
-
-      if (this.role === "[ROLE_Admin]") {
-        this.router.navigateByUrl('/admin/BAchoose');
-      } else {
-        this.router.navigateByUrl('/user/BAchoose');
-      }
+      this.router.navigateByUrl('/admin/BAchoose');
     }
   }
 }

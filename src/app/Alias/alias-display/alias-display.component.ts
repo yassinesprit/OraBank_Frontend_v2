@@ -39,11 +39,5 @@ export class AliasDisplayComponent implements OnInit{
     }, 2000); // Hide the notification after 2 seconds (adjust the duration as needed)
   }
 
-  navigateToBAchoose() {
-    if (this.role === "[ROLE_Admin]") {
-      this.router.navigateByUrl('/admin/BAchoose');
-    } else {
-      this.router.navigateByUrl('/user/BAchoose');
-    }
-  }
+
 }

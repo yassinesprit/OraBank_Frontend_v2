@@ -1228,7 +1228,7 @@ export class AliasFormComponent implements OnInit {
   ]
   username = localStorage.getItem('username') ?? ''; // Provide an empty string as the default value
   list!: CompteBancaire[];
-  telephone: string="";
+  telephone: string = "";
   private compteBancaireId: number = 0;
   role = localStorage.getItem('role') ?? '';
 
@@ -1255,7 +1255,7 @@ export class AliasFormComponent implements OnInit {
     });
   }
 
-  createAliasAdresse(formType: string, value: NgForm,compte:any): void {
+  createAliasAdresse(formType: string, value: NgForm, compte: any): void {
 
     this.compteBancaireId = compte;
 
@@ -1272,27 +1272,25 @@ export class AliasFormComponent implements OnInit {
         // Handle the response from the alias service
         console.log('Alias created:', response);
         console.log(response.id)
-        localStorage.setItem("alias",response.id);
+        localStorage.setItem("alias", response.id);
         value.resetForm();
         Swal.fire({
           title: "Parfait !",
           text: "Alias Créé!",
           icon: "success"
         });
-        if (this.role === "[ROLE_Admin]") {
-          this.router.navigate(['/admin/alias/' + this.compteBancaireId]);
-        } else {
-          this.router.navigate(['/user/alias/' + this.compteBancaireId]);
-        }      },
+        this.router.navigate(['/admin/alias/' + this.compteBancaireId]);
+      },
       error => {
         // Handle any errors that occur during the alias service request
         console.error('Error creating alias:', error);
       }
     );
   }
-  createAliasTel(formType: string, value: NgForm,compte:any): void {
+
+  createAliasTel(formType: string, value: NgForm, compte: any): void {
     this.compteBancaireId = compte;
-      this.telephone = value.controls['selectCountryCode'].value.dial_code+value.controls['telephone'].value;
+    this.telephone = value.controls['selectCountryCode'].value.dial_code + value.controls['telephone'].value;
     const aliasRequest: Alias = new Alias(
       "myAlias",
       formType,
@@ -1303,7 +1301,7 @@ export class AliasFormComponent implements OnInit {
     this.aliasService.createAlias(aliasRequest).subscribe(
       response => {
         console.log(response.id)
-        localStorage.setItem("alias",response.alias);
+        localStorage.setItem("alias", response.alias);
         // Handle the response from the alias service
         console.log('Alias created:', response);
         value.resetForm();
@@ -1312,11 +1310,7 @@ export class AliasFormComponent implements OnInit {
           text: "Alias Créé!",
           icon: "success"
         });
-        if (this.role === "[ROLE_Admin]") {
           this.router.navigate(['/admin/alias/' + this.compteBancaireId]);
-        } else {
-          this.router.navigate(['/user/alias/' + this.compteBancaireId]);
-        }
       },
       error => {
         // Handle any errors that occur during the alias service request

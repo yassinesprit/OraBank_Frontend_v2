@@ -9,10 +9,19 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
   styleUrl: './details-ba.component.css'
 })
 export class DetailsBAComponent implements OnInit {
+  compteBancaire!: CompteBancaire;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: CompteBancaire) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: number, private b:BankAccountService) {}
 
   ngOnInit(): void {
     // You can perform any initialization tasks here
+    this.b.findCompteById(Number(this.data)).subscribe(
+      (data: CompteBancaire) => {
+        this.compteBancaire = data;
+      },
+      (error) => {
+        console.error('Error fetching compte bancaire data', error);
+      }
+    );
   }
 }

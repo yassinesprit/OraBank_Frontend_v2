@@ -30,7 +30,7 @@
     <div *ngIf="passwordInput.errors?.['required']">Obligatoire</div>
     <div *ngIf="passwordInput.errors?.['minlength']">Longueur Minimale : 5</div>
   </div>
-  <button type="submit" id="login-button">S'authentifier</button>
+  <button type="submit" id="login-button" [disabled]="loginForm.invalid">S'authentifier</button>
   </form>
 </div>
 

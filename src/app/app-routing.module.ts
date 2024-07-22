@@ -19,6 +19,7 @@ import {DetailUserComponent} from "./User/detail-user/detail-user.component";
 import {AuthGuard} from "./Security/auth.guard";
 import {UnauthorizedComponent} from "./Shared/unauthorized/unauthorized.component";
 import {DetailsBAComponent} from "./BankAccount/details-ba/details-ba.component";
+import {DashboardComponent} from "./dashboard/dashboard.component";
 
 const routes: Routes = [
   {path: '', pathMatch:"full", redirectTo: 'login'},
@@ -33,20 +34,21 @@ const routes: Routes = [
     // canActivate: [AuthGuard], // If AuthGuard should protect the sidenav routes
     children: [
       {path: 'users', component: ListUsersComponent , canActivate: [AuthGuard], data: { roles: ['[ROLE_Admin]']}},
-      {path: 'detailUser', component: DetailUserComponent},
-      {path: 'home', component: HomeComponent},
-      {path: 'BAchoose', component: BAChooseComponent},
-      {path: 'transfer', component: TransferComponent},
-      {path: 'list-transfer', component: TransactionsListComponent},
-      {path: 'send-form', component: SendComponent},
-      {path: 'receive-form', component: ReceiveComponent},
-      {path: 'list-demande', component: DemandeListComponent},
-      {path: 'aliasform', component: AliasFormComponent},
-      {path: 'alias/:id', component: AliasDisplayComponent},
-      {path: 'list-contact', component: ContactListComponent},
+      {path: 'detailUser', component: DetailUserComponent, canActivate: [AuthGuard], data: { roles: ['[ROLE_Admin]','[ROLE_Utilisateur]']}},
+      {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: { roles: ['[ROLE_Admin]','[ROLE_Utilisateur]']}},
+      {path: 'home', component: HomeComponent, canActivate: [AuthGuard], data: { roles: ['[ROLE_Admin]','[ROLE_Utilisateur]']}},
+      {path: 'BAchoose', component: BAChooseComponent, canActivate: [AuthGuard], data: { roles: ['[ROLE_Admin]','[ROLE_Utilisateur]']}},
+      {path: 'transfer', component: TransferComponent, canActivate: [AuthGuard], data: { roles: ['[ROLE_Admin]','[ROLE_Utilisateur]']}},
+      {path: 'list-transfer', component: TransactionsListComponent, canActivate: [AuthGuard], data: { roles: ['[ROLE_Admin]','[ROLE_Utilisateur]']}},
+      {path: 'send-form', component: SendComponent, canActivate: [AuthGuard], data: { roles: ['[ROLE_Admin]','[ROLE_Utilisateur]']}},
+      {path: 'receive-form', component: ReceiveComponent, canActivate: [AuthGuard], data: { roles: ['[ROLE_Admin]','[ROLE_Utilisateur]']}},
+      {path: 'list-demande', component: DemandeListComponent, canActivate: [AuthGuard], data: { roles: ['[ROLE_Admin]','[ROLE_Utilisateur]']}},
+      {path: 'aliasform', component: AliasFormComponent, canActivate: [AuthGuard], data: { roles: ['[ROLE_Admin]','[ROLE_Utilisateur]']}},
+      {path: 'alias/:id', component: AliasDisplayComponent, canActivate: [AuthGuard], data: { roles: ['[ROLE_Admin]','[ROLE_Utilisateur]']}},
+      {path: 'list-contact', component: ContactListComponent, canActivate: [AuthGuard], data: { roles: ['[ROLE_Admin]','[ROLE_Utilisateur]']}},
     ]
   },
-  {
+  /*{
     path: 'user',
     component: SideBarComponent,
     //canActivate: [AuthGuard], // If AuthGuard should protect the sidenav routes
@@ -63,11 +65,11 @@ const routes: Routes = [
       {path: 'alias/:id', component: AliasDisplayComponent},
       {path: 'list-contact', component: ContactListComponent}
 
-      /*{ path: 'schemas', component: SchemaListComponent, data: { roles: ['Admin'] } },*/
+      /!*{ path: 'schemas', component: SchemaListComponent, data: { roles: ['Admin'] } },*!/
 
 
     ]
-  }
+  }*/
 ];
 
 @NgModule({

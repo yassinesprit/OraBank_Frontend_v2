@@ -123,9 +123,10 @@ export class AdminSideBarComponent implements OnInit {
   }
 
   openDetailsDialog(): void {
+    this.compteBancaireId= localStorage.getItem('compteBancaireId') ?? ''
     const dialogRef = this.dialog.open(DetailsBAComponent, {
       width: '400px',
-      data: this.compteBancaire
+      data: this.compteBancaireId
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -151,17 +152,9 @@ export class AdminSideBarComponent implements OnInit {
     console.log(this.compteBancaireId)
     console.log(alias)
     if (!alias) {
-      if (this.role === "[ROLE_Admin]") {
         this.router.navigateByUrl('/admin/BAchoose');
-      } else {
-        this.router.navigateByUrl('/user/BAchoose');
-      }
     } else {
-      if (this.role === "[ROLE_Admin]") {
         this.router.navigateByUrl('/admin/alias/'+this.compteBancaireId);
-      } else {
-        this.router.navigateByUrl('/user/alias/'+this.compteBancaireId);
-      }
     }
   }
   navigateToAliasTransactions() {
@@ -170,17 +163,9 @@ export class AdminSideBarComponent implements OnInit {
     console.log(this.compteBancaireId)
     console.log(alias)
     if (!alias) {
-      if (this.role === "[ROLE_Admin]") {
         this.router.navigateByUrl('/admin/BAchoose');
-      } else {
-        this.router.navigateByUrl('/user/BAchoose');
-      }
     } else {
-      if (this.role === "[ROLE_Admin]") {
         this.router.navigateByUrl('/admin/transfer');
-      } else {
-        this.router.navigateByUrl('/user/transfer');
-      }
     }
   }
   navigateToAliasTransferer() {
@@ -189,17 +174,10 @@ export class AdminSideBarComponent implements OnInit {
     console.log(this.compteBancaireId)
     console.log(alias)
     if (!alias) {
-      if (this.role === "[ROLE_Admin]") {
         this.router.navigateByUrl('/admin/BAchoose');
-      } else {
-        this.router.navigateByUrl('/user/BAchoose');
-      }
+
     } else {
-      if (this.role === "[ROLE_Admin]") {
         this.router.navigateByUrl('/admin/send-form');
-      } else {
-        this.router.navigateByUrl('/user/send-form');
-      }
     }
   }
   navigateToAliasRecevoir() {
@@ -208,17 +186,9 @@ export class AdminSideBarComponent implements OnInit {
     console.log(this.compteBancaireId)
     console.log(alias)
     if (!alias) {
-      if (this.role === "[ROLE_Admin]") {
         this.router.navigateByUrl('/admin/BAchoose');
-      } else {
-        this.router.navigateByUrl('/user/BAchoose');
-      }
     } else {
-      if (this.role === "[ROLE_Admin]") {
         this.router.navigateByUrl('/admin/receive-form');
-      } else {
-        this.router.navigateByUrl('/user/receive-form');
-      }
     }
   }
   navigateToAliasListTransfert() {
@@ -227,17 +197,9 @@ export class AdminSideBarComponent implements OnInit {
     console.log(this.compteBancaireId)
     console.log(alias)
     if (!alias) {
-      if (this.role === "[ROLE_Admin]") {
         this.router.navigateByUrl('/admin/BAchoose');
-      } else {
-        this.router.navigateByUrl('/user/BAchoose');
-      }
     } else {
-      if (this.role === "[ROLE_Admin]") {
         this.router.navigateByUrl('/admin/list-transfer');
-      } else {
-        this.router.navigateByUrl('/user/list-transfer');
-      }
     }
   }
   navigateToAliasListDemandes() {
@@ -246,17 +208,9 @@ export class AdminSideBarComponent implements OnInit {
     console.log(this.compteBancaireId)
     console.log(alias)
     if (!alias) {
-      if (this.role === "[ROLE_Admin]") {
         this.router.navigateByUrl('/admin/BAchoose');
-      } else {
-        this.router.navigateByUrl('/user/BAchoose');
-      }
     } else {
-      if (this.role === "[ROLE_Admin]") {
         this.router.navigateByUrl('/admin/list-demande');
-      } else {
-        this.router.navigateByUrl('/user/list-demande');
-      }
     }
   }
 

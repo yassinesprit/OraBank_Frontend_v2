@@ -1,92 +1,46 @@
-<mat-card class="main-card">
-  <mat-card-title> Choisir l'adresse de paiement
-  </mat-card-title>
-  <br>
-  <mat-card-content>
-    <div class="card-container">
-
-      <form #adresseForm="ngForm" (ngSubmit)="createAliasAdresse('ParAdresse', adresseForm,adresseForm.controls['selectcompte'].value.id)">
+<mat-card class="alias-card">
+  <mat-card-title>Gérer les Aliases</mat-card-title>
+  <mat-tab-group animationDuration="1000ms">
+    <mat-tab label="Adresse de Paiement">
+      <form #adresseForm="ngForm" (ngSubmit)="createAliasAdresse('ParAdresse', adresseForm, adresseForm.controls['selectcompte'].value.id)" class="form">
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Choisir votre compte bancaire :</mat-label>
-          <mat-select
-            name="selectcompte"
-            required
-            ngModel
-            id="selectcompte"
-            #selectcompte="ngModel">
+          <mat-select name="selectcompte" required ngModel id="selectcompte" #selectcompte="ngModel">
             <mat-option *ngFor="let compte of list" [value]="compte">{{ compte.libelle }}</mat-option>
           </mat-select>
-          <mat-error *ngIf="selectcompte.touched" >
+          <mat-error *ngIf="selectcompte.touched">
             <span *ngIf="selectcompte.errors?.['required']">Obligatoire</span>
           </mat-error>
         </mat-form-field>
         <div class="actions">
-          <button
-            mat-raised-button
-            color="primary"
-            type="submit"
-            [disabled]="adresseForm.invalid">
-            Créer alias
-          </button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="adresseForm.invalid">Créer alias</button>
         </div>
       </form>
-    </div>
-  </mat-card-content>
-</mat-card>
-<mat-card class="main-card">
-  <mat-card-title> Choisir Numero de Telephone
-  </mat-card-title>
-  <br>
-  <mat-card-content>
-    <div class="card-container">
-
-      <form #telForm="ngForm" (ngSubmit)="createAliasTel('ParTelephone', telForm,telForm.controls['selectcompte_tel'].value.id)">
-        <!-- Bank Account Select -->
+    </mat-tab>
+    <mat-tab label="Numéro de telephone">
+      <form #telForm="ngForm" (ngSubmit)="createAliasTel('ParTelephone', telForm, telForm.controls['selectcompte_tel'].value.id)" class="form">
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Choisir votre compte bancaire :</mat-label>
-          <mat-select
-            name="selectcompte_tel"
-            required
-            ngModel
-            id="selectedCompte_tel"
-            #selectcompte_tel="ngModel">
+          <mat-select name="selectcompte_tel" required ngModel id="selectedCompte_tel" #selectcompte_tel="ngModel">
             <mat-option *ngFor="let compte of list" [value]="compte">{{ compte.libelle }}</mat-option>
           </mat-select>
-          <mat-error *ngIf="selectcompte_tel.touched" >
+          <mat-error *ngIf="selectcompte_tel.touched">
             <span *ngIf="selectcompte_tel.errors?.['required']">Obligatoire</span>
           </mat-error>
         </mat-form-field>
-
-        <!-- Country Code and Phone Number Inputs -->
         <div class="country-phone">
           <mat-form-field appearance="fill" class="country-select">
             <mat-label>Code Pays :</mat-label>
-            <mat-select
-              name="selectCountryCode"
-              required
-              ngModel
-              id="selectedCountryCode"
-              #selectCountryCode="ngModel">
-              <mat-option *ngFor="let code of countryCodes" [value]="code">{{ code.name }}
-                : {{code.dial_code}}</mat-option>
+            <mat-select name="selectCountryCode" required ngModel id="selectedCountryCode" #selectCountryCode="ngModel">
+              <mat-option *ngFor="let code of countryCodes" [value]="code">{{ code.name }} : {{ code.dial_code }}</mat-option>
             </mat-select>
             <mat-error *ngIf="selectCountryCode.touched">
               <span *ngIf="selectCountryCode.errors?.['required']">Obligatoire</span>
             </mat-error>
-
           </mat-form-field>
-
           <mat-form-field appearance="fill" class="phone-input">
             <mat-label>Numéro de Téléphone :</mat-label>
-            <input matInput
-                   type="number"
-                   ngModel
-                   id="telephone"
-                   name="telephone"
-                   required
-                   minlength="8"
-                   pattern="^[0-9]*$"
-                   #tel="ngModel">
+            <input matInput type="number" ngModel id="telephone" name="telephone" required minlength="8" pattern="^[0-9]*$" #tel="ngModel">
             <mat-error *ngIf="tel.invalid && tel.touched">
               <span *ngIf="tel.errors?.['pattern']">Caractères Invalides</span>
               <span *ngIf="tel.errors?.['required']">Obligatoire</span>
@@ -94,13 +48,10 @@
             </mat-error>
           </mat-form-field>
         </div>
-
-        <!-- Submit Button -->
         <div class="actions">
-          <button mat-raised-button color="primary" type="submit" [disabled]="telForm.invalid">Créer alias
-          </button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="telForm.invalid">Créer alias</button>
         </div>
       </form>
-    </div>
-  </mat-card-content>
+    </mat-tab>
+  </mat-tab-group>
 </mat-card>

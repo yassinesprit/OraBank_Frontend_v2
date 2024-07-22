@@ -43,7 +43,7 @@ export class TransferComponent implements OnInit {
     );
   }
 
-  navigateToSend() {
+ /* navigateToSend() {
     if (this.role === "[ROLE_Admin]") {
       this.router.navigate(['/admin/send-form']);
     } else {
@@ -72,5 +72,5 @@ export class TransferComponent implements OnInit {
     } else {
       this.router.navigate(['/user/list-demande']);
     }
-  }
+  }*/
 }

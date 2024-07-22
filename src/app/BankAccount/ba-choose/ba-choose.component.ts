@@ -35,21 +35,13 @@ export class BAChooseComponent implements OnInit {
       result => {
         console.log(id)
         localStorage.setItem("compteBancaireId",id);
-        if (this.role === "[ROLE_Admin]") {
           this.router.navigate(['/admin/alias/' + id]);
-        } else {
-          this.router.navigate(['/user/alias/' + id]);
-        }
       }
       , error => {
         console.error(error);
         if (error.status === 500) {
           localStorage.setItem("compteBancaireId",id);
-          if (this.role === "[ROLE_Admin]") {
             this.router.navigate(['/admin/aliasform']);
-          } else {
-            this.router.navigate(['/user/aliasform']);
-          }
         }
       }
     )

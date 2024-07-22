@@ -47,11 +47,7 @@ export class LoginComponent implements OnInit {
           icon: 'success'
         });
         console.log(this.authService.getUserRole(test1.token));
-        if (this.authService.getUserRole(test1.token) === '[ROLE_Admin]') {
           this.router.navigate(['/admin/home']);
-        } else if (this.authService.getUserRole(test1.token) === '[ROLE_Utilisateur]') {
-          this.router.navigate(['/user/home']);
-        }
       },
       error => {
         console.error(error);

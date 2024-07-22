@@ -50,6 +50,8 @@ import { UnauthorizedComponent } from './Shared/unauthorized/unauthorized.compon
 import { DetailsBAComponent } from './BankAccount/details-ba/details-ba.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { ContactFormComponent } from './Contact/contact-form/contact-form.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import {MatTab, MatTabGroup} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -73,6 +75,7 @@ import { ContactFormComponent } from './Contact/contact-form/contact-form.compon
     UnauthorizedComponent,
     DetailsBAComponent,
     ContactFormComponent,
+    DashboardComponent,
 
   ],
   imports: [
@@ -94,8 +97,8 @@ import { ContactFormComponent } from './Contact/contact-form/contact-form.compon
     MatDividerModule,
     QRCodeModule,
     ClipboardModule, MatAccordion,
-    MatSelectModule, MatPaginator, MatExpansionPanel,MatExpansionModule,
-    MatDialogModule
+    MatSelectModule, MatPaginator, MatExpansionPanel, MatExpansionModule,
+    MatDialogModule, MatTabGroup, MatTab
   ],
   providers: [
     AuthGuard,
