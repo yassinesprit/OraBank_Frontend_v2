@@ -152,6 +152,34 @@
       </form>
 
     </mat-tab>
+    <mat-tab label="Par Contact">
+      <form #parConatctForm="ngForm" (ngSubmit)="onSubmitParAlias(parConatctForm)" class="form">
+
+        <!-- Montant Input -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Montant</mat-label>
+          <input matInput name="montant" type="number" ngModel required min="0.01" pattern="^[0-9]*$" #montant="ngModel">
+          <mat-error *ngIf="montant.invalid && montant.touched ">
+            <span *ngIf="montant.errors?.['required']">Montant est requis</span>
+            <span *ngIf="montant.errors?.['min']">Montant doit être supérieur à 0</span>
+            <span *ngIf="montant.errors?.['pattern']">Caractères Invalides</span>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Note Input -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Note</mat-label>
+          <textarea matInput name="note" ngModel></textarea>
+        </mat-form-field>
+
+        <!-- Continuer Button -->
+        <div class="actions">
+          <button mat-raised-button color="primary" type="submit" [disabled]="parConatctForm.invalid">Continuer</button>
+        </div>
+      </form>
+
+    </mat-tab>
+
     <mat-tab label="Ajouter Contact">
       <form #contactForm="ngForm" (ngSubmit)="onSubmitContact(contactForm)" class="form">
         <!-- Nom et Prénom Input -->

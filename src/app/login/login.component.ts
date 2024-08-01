@@ -41,11 +41,11 @@ export class LoginComponent implements OnInit {
         const username = this.helper.decodeToken(test1.token).sub;
         console.log(username);
         localStorage.setItem('username', username);
-        Swal.fire({
+/*        Swal.fire({
           title: 'Parfait!',
           text: 'Vous êtes connectés en tant que ' + username,
           icon: 'success'
-        });
+        });*/
         console.log(this.authService.getUserRole(test1.token));
           this.router.navigate(['/admin/home']);
       },

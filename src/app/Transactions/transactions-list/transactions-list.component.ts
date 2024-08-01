@@ -10,7 +10,7 @@ import {MatPaginator} from "@angular/material/paginator";
   styleUrl: './transactions-list.component.css'
 })
 export class TransactionsListComponent implements OnInit{
-  displayedColumns: string[] = ['reference', 'description', 'montant', 'date', 'typeTransfert', 'statusTransfert'];
+  displayedColumns: string[] = ['reference', 'description', 'montant', 'date', 'typeTransfert','frauduleux', 'statusTransfert'];
   dataSource = new MatTableDataSource<Transfert>();
   alias = localStorage.getItem('alias') ?? '';
 

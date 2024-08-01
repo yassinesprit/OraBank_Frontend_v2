@@ -39,6 +39,12 @@
           <td mat-cell *matCellDef="let element"> {{element.typeTransfert}} </td>
         </ng-container>
 
+        <!-- fraude Transfert Column -->
+        <ng-container matColumnDef="frauduleux">
+          <th mat-header-cell *matHeaderCellDef> Frauduleux </th>
+          <td mat-cell *matCellDef="let element"> {{element.frauduleux}} </td>
+        </ng-container>
+
         <!-- Status Transfert Column -->
         <ng-container matColumnDef="statusTransfert">
           <th mat-header-cell *matHeaderCellDef> Entrant/Sortant </th>
@@ -50,7 +56,9 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+            [ngClass]="{'fraud-row': row.frauduleux}">
+        </tr>
       </table>
     </div>
 

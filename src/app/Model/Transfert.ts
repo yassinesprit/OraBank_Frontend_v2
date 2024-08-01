@@ -10,4 +10,5 @@ export class Transfert {
   date!: Date;
   typeTransfert!: string;
   statusTransfert!: string;
+  frauduleux!:boolean;
 }
